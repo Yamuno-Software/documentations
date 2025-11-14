@@ -1,6 +1,37 @@
 {
   "name": "Yamuno Apps Documentation",
   "description": "Documentation for Yamuno Atlassian and Monday.com apps",
+  "logo": "https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/yamuno-primary.png",
+  "favicon": "https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/yamuno-primary.png",
+  "social": {
+    "website": "https://yamuno.com",
+    "linkedin": "https://www.linkedin.com/company/yamuno",
+    "medium": "https://medium.com/@yamuno"
+  },
+  "header": {
+    "links": [
+      {
+        "title": "Privacy Policy",
+        "href": "https://yamuno.com/privacy-policy"
+      },
+      {
+        "title": "Terms of Service",
+        "href": "https://yamuno.com/tos"
+      },
+      {
+        "title": "EULA",
+        "href": "https://yamuno.com/eula"
+      },
+      {
+        "title": "Support",
+        "href": "https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51"
+      },
+      {
+        "title": "Blogs",
+        "href": "https://yamuno.com/blogs"
+      }
+    ]
+  },
   "sidebar": [
     {
       "group": "Overview",
