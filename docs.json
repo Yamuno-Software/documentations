@@ -6,20 +6,23 @@
     "dark": "https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/yamuno-primary.png"
   },
   "favicon": "https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/yamuno-primary.png",
-  "social": {
-    "website": "https://yamuno.com",
-    "linkedin": "https://www.linkedin.com/company/yamuno"
+  "theme": {
+    "primary": "#504DC4"
   },
   "header": {
     "showGitHubCard": false,
     "links": [
       {
-        "title": "Website",
-        "href": "https://yamuno.com"
-      },
-      {
         "title": "Marketplace",
         "href": "https://marketplace.atlassian.com/vendors/1224569/yamuno-software"
+      },
+      {
+        "title": "LinkedIn",
+        "href": "https://www.linkedin.com/company/yamuno"
+      },
+      {
+        "title": "Medium",
+        "href": "https://medium.com/@yamuno"
       }
     ]
   },
