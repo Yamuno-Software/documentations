@@ -1,0 +1,162 @@
+---
+title: Authentication
+description: Token management and security features
+order: 2
+---
+
+# Authentication
+
+## Token Format
+
+All API requests require Bearer token authentication in the Authorization header:
+
+```
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+## Token Validation
+
+The API validates:
+
+- Token signature and integrity
+- Token expiration
+- Associated user permissions
+- License status at token creation time
+
+## Security Features
+
+### JWT-based Tokens
+
+Tokens are cryptographically signed JSON Web Tokens (JWT) that contain:
+
+- User identification
+- Token expiration timestamp
+- License validation information
+- Creation timestamp
+
+### Encrypted Storage
+
+- Tokens are stored using Forge KVS (Key-Value Store) secrets
+- Bank-level encryption for all stored tokens
+- Tokens are hashed and cannot be retrieved after creation
+
+### Auto-expiration
+
+- Tokens automatically expire based on selected period
+- Expired tokens are rejected immediately
+- No grace period after expiration
+
+### License-bound
+
+- Tokens created when license is active remain valid until expiration
+- License status is validated at token creation time
+- Tokens persist even if license expires after creation
+
+## Token Management
+
+### Creating Tokens
+
+1. Navigate to API Token Management page
+2. Click "Create New Token"
+3. Configure label and expiration
+4. Copy token immediately (shown only once)
+
+### Viewing Tokens
+
+- View all active tokens in the management page
+- See token label, creation date, and expiration date
+- Cannot view token value after creation
+
+### Revoking Tokens
+
+1. Locate token in the management page
+2. Click "Revoke" button
+3. Confirm revocation
+4. Token becomes invalid immediately
+
+## Token Limits
+
+- **Maximum tokens per instance**: 50 tokens
+- **Maximum expiration period**: 30 days
+- **Minimum expiration period**: 1 day
+- **Token visibility**: Shown only once at creation
+
+## Security Best Practices
+
+### Do's ✓
+
+- Store tokens in environment variables
+- Use secret management systems
+- Rotate tokens regularly
+- Revoke unused tokens immediately
+- Use HTTPS for all API requests
+- Set shorter expiration periods for higher security
+- Create separate tokens for different environments
+
+### Don'ts ✗
+
+- Never commit tokens to version control
+- Don't expose tokens in client-side code
+- Don't share tokens between environments
+- Don't log tokens in application logs
+- Don't send tokens over unencrypted connections
+- Don't store tokens in plain text files
+- Don't use expired or revoked tokens
+
+## Token Lifecycle
+
+```
+Creation → Active → Expired/Revoked
+```
+
+1. **Creation**: Token generated and displayed once
+2. **Active**: Token validates and authorizes API requests
+3. **Expired/Revoked**: Token becomes invalid and requests are rejected
+
+## Troubleshooting Authentication
+
+### 401 Unauthorized
+
+**Causes:**
+
+- Missing Authorization header
+- Incorrect token format
+- Token not found in system
+
+**Solutions:**
+
+- Verify header format: `Authorization: Bearer YOUR_TOKEN`
+- Check token was copied correctly
+- Ensure token hasn't been deleted
+
+### 403 Forbidden
+
+**Causes:**
+
+- Token expired
+- Token verification failed
+
+**Solutions:**
+
+- Check token expiration date
+- Create new token if expired
+- Verify clock synchronization
+
+### 402 License Expired
+
+**Causes:**
+
+- License was inactive when token was created
+- Token created during trial period that has ended
+
+**Solutions:**
+
+- Verify current license status
+- Create new token with active license
+- Contact admin to renew license
+
+## Related Documentation
+
+- [Getting Started](/docs/markdown-importer-for-confluence/rest-api/getting-started) - Create your first token
+- [API Reference](/docs/markdown-importer-for-confluence/rest-api/api-reference) - Request/response formats
+- [Best Practices](/docs/markdown-importer-for-confluence/rest-api/best-practices) - Security recommendations

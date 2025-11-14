@@ -1,0 +1,280 @@
+---
+title: Features & How To
+description: Comprehensive guide to all Markdown Exporter features
+order: 1
+---
+
+# Features & How To
+
+![Markdown Exporter for Monday.com](https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/Markdown%20Exporter.jpg)
+
+Learn about all the powerful features of Markdown Exporter for Monday.com and how to use them effectively.
+
+## Getting Started
+
+### Accessing the App
+
+To use Markdown Exporter for Monday.com:
+
+1. **Open Workspace Apps**
+   - Navigate to your Monday.com workspace
+   - Click on the workspace apps section
+   - Select "Markdown Exporter" from your installed apps
+
+2. **Select Your Workspace**
+   - Choose the workspace containing the docs you want to export
+   - The app will load all available folders and documents
+
+3. **Choose Export Source**
+   - Select **Specific Folder** to export docs from a particular folder
+   - Or select **All Folders** to export the entire workspace documentation
+
+## Core Export Features
+
+### Single Document Export
+
+Export individual documents from the list of processed docs.
+
+**How to use:**
+1. Open the app from workspace apps section
+2. Select your workspace and source (specific folder or all folders)
+3. Browse the list of available documents
+4. Select the specific document you want to export
+5. Click "Download" for that document
+
+**Best for:**
+- Quick exports of specific documents
+- Testing export functionality
+- Sharing individual docs with specific formatting
+
+### Folder Export
+
+Export entire folders with preserved hierarchy.
+
+**How to use:**
+1. Open the app from workspace apps section
+2. Select your workspace
+3. Choose **Specific Folder** as your source
+4. Select the folder you want to export
+5. Click "Download Processed File" to get all documents as a ZIP
+
+**Features:**
+- Maintains folder structure
+- Preserves parent-child relationships
+- Includes all nested docs
+- Organizes attachments by folder
+
+**Best for:**
+- Exporting project documentation
+- Creating topic-based archives
+- Backing up specific sections
+
+### Workspace Export
+
+Export your complete Monday.com workspace documentation.
+
+**How to use:**
+1. Open the app from workspace apps section
+2. Select your workspace
+3. Choose **All Folders** as your source
+4. Review the complete list of documents to be processed
+5. Click "Download Processed File" to export everything as a ZIP
+
+**Features:**
+- Complete workspace backup
+- All docs and folders included
+- Comprehensive attachment handling
+- Organized ZIP structure with preserved hierarchy
+
+**Best for:**
+- Full workspace backups
+- Complete documentation archives
+- Exporting all documentation at once
+
+## Attachment Handling
+
+### Local Attachment Download
+
+All attachments are downloaded and saved with your markdown files.
+
+**Supported file types:**
+- Images (PNG, JPG, GIF, SVG, WebP)
+- Documents (PDF, DOCX, XLSX, PPTX)
+- Media files (MP4, MOV, MP3)
+- Archives (ZIP, RAR)
+- Other file types
+
+**Folder structure:**
+```
+export/
+├── docs/
+│   └── your-doc.md
+└── attachments/
+    ├── image1.png
+    └── document.pdf
+```
+
+### Reference Preservation
+
+All attachment references in markdown are updated to point to local files:
+
+```markdown
+![Screenshot](./attachments/screenshot.png)
+
+[Download Report](./attachments/report.pdf)
+```
+
+### Attachment Organization
+
+**By doc**: Attachments organized by source document
+**By type**: Optional grouping by file type
+**Flat structure**: All attachments in single folder
+
+## Formatting Preservation
+
+### Supported Markdown Features
+
+The exporter preserves all standard markdown formatting:
+
+**Text Formatting:**
+- Bold, italic, strikethrough
+- Headers (H1-H6)
+- Block quotes
+- Horizontal rules
+
+**Lists:**
+- Unordered lists
+- Ordered lists
+- Nested lists
+- Task lists with checkboxes
+
+**Code:**
+- Inline code
+- Code blocks with syntax highlighting
+- Language specification
+
+**Tables:**
+- Standard markdown tables
+- Column alignment
+- Complex table structures
+
+**Links:**
+- External links
+- Internal doc links
+- Anchor links
+- Email links
+
+**Media:**
+- Images with alt text
+- Embedded videos
+- File attachments
+
+### Monday.com-Specific Features
+
+**Mentions**: Converted to plain text with @ symbol
+**Status labels**: Preserved as text or emojis
+**Board links**: Converted to text references
+**Item links**: Converted to markdown links where possible
+
+## Export Customization
+
+### File Naming Options
+
+Choose how exported files are named:
+
+- **Original names**: Keep Monday.com doc names
+- **Slugified names**: Convert to URL-friendly names
+- **Numbered**: Add sequential numbers
+- **Custom prefix**: Add custom prefix to all files
+
+### Output Format Options
+
+**Single ZIP**: All content in organized ZIP
+**Folder structure**: Maintain Monday.com structure
+**Flat export**: All docs in single folder
+**Split by section**: Separate exports per section
+
+### Metadata Inclusion
+
+Optionally include metadata in frontmatter:
+
+```yaml
+---
+title: Document Title
+author: John Doe
+created: 2024-01-15
+modified: 2024-01-20
+monday_doc_id: 123456789
+---
+```
+
+## Advanced Features
+
+### Internal Link Resolution
+
+Internal links between Monday.com docs are intelligently converted:
+
+- Relative paths for local structure
+- Preserved link text
+- Fallback for broken links
+- Cross-references maintained
+
+### Multi-workspace Support
+
+Export from multiple workspaces:
+
+1. Switch workspace in Monday.com
+2. Authorize app for new workspace
+3. Export as needed
+4. Organize exports separately
+
+### Incremental Exports
+
+Export only changed docs since last export:
+
+1. Enable "Track exports" option
+2. Perform initial export
+3. Subsequent exports only include:
+   - New docs
+   - Modified docs
+   - New attachments
+
+### Batch Processing
+
+For large workspaces:
+
+- Automatic batching of exports
+- Progress tracking
+- Resume interrupted exports
+- Error handling and retry
+
+## Tips & Best Practices
+
+### Before Exporting
+
+1. **Clean up**: Remove unnecessary docs
+2. **Organize**: Structure folders logically
+3. **Check permissions**: Verify access to all docs
+4. **Update docs**: Ensure content is current
+
+### During Export
+
+1. **Stay online**: Maintain internet connection
+2. **Don't close**: Keep browser tab open
+3. **Monitor progress**: Watch for errors
+4. **Be patient**: Large exports take time
+
+### After Export
+
+1. **Verify structure**: Check folder organization
+2. **Test links**: Verify internal links work
+3. **Check attachments**: Ensure all files present
+4. **Review formatting**: Spot-check markdown rendering
+
+### For Best Results
+
+1. **Use consistent naming**: Standardize doc names
+2. **Organize hierarchically**: Use folders effectively
+3. **Minimize duplicates**: Consolidate similar docs
+4. **Document structure**: Include README files
+5. **Test incrementally**: Export small sections first

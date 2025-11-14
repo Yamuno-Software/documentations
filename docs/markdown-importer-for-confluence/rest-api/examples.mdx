@@ -1,0 +1,428 @@
+---
+title: Examples
+description: Code samples in multiple programming languages
+order: 5
+---
+
+# API Examples
+
+## cURL Examples
+
+### Create a New Page
+
+```bash
+curl -X POST "https://your-site.atlassian.net/wiki/apps/your-app-id/your-env-id/webtrigger" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "spaceId": "DOCS",
+    "parentId": "123456789",
+    "pageTitle": "Getting Started",
+    "content": "# Getting Started\n\nWelcome to our documentation!\n\n## Installation\n\n```bash\nnpm install our-package\n```",
+    "overwrite": false
+  }'
+```
+
+### Update Existing Page
+
+```bash
+curl -X POST "https://your-site.atlassian.net/wiki/apps/your-app-id/your-env-id/webtrigger" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "spaceId": "DOCS",
+    "parentId": "123456789",
+    "pageTitle": "API Reference",
+    "content": "# API Reference\n\nUpdated content here...",
+    "overwrite": true
+  }'
+```
+
+## Node.js / JavaScript
+
+### Using Axios
+
+```javascript
+const axios = require('axios');
+
+async function importToConfluence() {
+  const endpoint = process.env.CONFLUENCE_API_ENDPOINT;
+  const token = process.env.CONFLUENCE_API_TOKEN;
+
+  try {
+    const response = await axios.post(endpoint, {
+      spaceId: 'DOCS',
+      parentId: '123456789',
+      pageTitle: 'Automated Documentation',
+      content: '# Automated Update\n\nThis page was updated automatically.',
+      overwrite: true
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('Success:', response.data);
+  } catch (error) {
+    console.error('Error:', error.response?.data || error.message);
+  }
+}
+
+importToConfluence();
+```
+
+### Using Fetch
+
+```javascript
+async function importToConfluence() {
+  const endpoint = process.env.CONFLUENCE_API_ENDPOINT;
+  const token = process.env.CONFLUENCE_API_TOKEN;
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        spaceId: 'DOCS',
+        parentId: '123456789',
+        pageTitle: 'Automated Documentation',
+        content: '# Automated Update\n\nThis page was updated automatically.',
+        overwrite: true
+      })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log('Success:', data);
+    } else {
+      console.error('Error:', data);
+    }
+  } catch (error) {
+    console.error('Network error:', error.message);
+  }
+}
+
+importToConfluence();
+```
+
+### Reading from File
+
+```javascript
+const fs = require('fs');
+const axios = require('axios');
+
+async function importMarkdownFile(filePath, pageTitle) {
+  const endpoint = process.env.CONFLUENCE_API_ENDPOINT;
+  const token = process.env.CONFLUENCE_API_TOKEN;
+
+  // Read markdown file
+  const content = fs.readFileSync(filePath, 'utf8');
+
+  try {
+    const response = await axios.post(endpoint, {
+      spaceId: 'DOCS',
+      parentId: '123456789',
+      pageTitle: pageTitle,
+      content: content,
+      overwrite: true
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log(`✓ Successfully imported ${filePath}`);
+  } catch (error) {
+    console.error(`✗ Failed to import ${filePath}:`, error.response?.data || error.message);
+  }
+}
+
+// Usage
+importMarkdownFile('./docs/README.md', 'Project README');
+```
+
+## Python
+
+### Basic Example
+
+```python
+import requests
+import os
+
+def import_to_confluence(title, content, overwrite=False):
+    endpoint = os.environ['CONFLUENCE_API_ENDPOINT']
+    token = os.environ['CONFLUENCE_API_TOKEN']
+
+    headers = {
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json'
+    }
+
+    payload = {
+        'spaceId': 'DOCS',
+        'parentId': '123456789',
+        'pageTitle': title,
+        'content': content,
+        'overwrite': overwrite
+    }
+
+    response = requests.post(endpoint, json=payload, headers=headers)
+
+    if response.status_code in [200, 201]:
+        print(f'✓ Success: {response.json()["body"]}')
+    else:
+        print(f'✗ Error: {response.json()["body"]}')
+
+    return response
+
+# Usage
+with open('README.md', 'r') as f:
+    markdown_content = f.read()
+
+import_to_confluence('Project README', markdown_content, overwrite=True)
+```
+
+### Batch Import
+
+```python
+import requests
+import os
+from pathlib import Path
+
+def import_multiple_files(files_dict):
+    """
+    Import multiple markdown files
+    files_dict: {'Page Title': 'path/to/file.md'}
+    """
+    endpoint = os.environ['CONFLUENCE_API_ENDPOINT']
+    token = os.environ['CONFLUENCE_API_TOKEN']
+
+    headers = {
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json'
+    }
+
+    results = {'success': [], 'failed': []}
+
+    for title, filepath in files_dict.items():
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+            payload = {
+                'spaceId': 'DOCS',
+                'parentId': '123456789',
+                'pageTitle': title,
+                'content': content,
+                'overwrite': True
+            }
+
+            response = requests.post(endpoint, json=payload, headers=headers)
+
+            if response.status_code in [200, 201]:
+                results['success'].append(title)
+                print(f'✓ {title}')
+            else:
+                results['failed'].append((title, response.json()['body']))
+                print(f'✗ {title}: {response.json()["body"]}')
+
+        except Exception as e:
+            results['failed'].append((title, str(e)))
+            print(f'✗ {title}: {str(e)}')
+
+    print(f'\nCompleted: {len(results["success"])} success, {len(results["failed"])} failed')
+    return results
+
+# Usage
+files = {
+    'Getting Started': 'docs/getting-started.md',
+    'API Reference': 'docs/api-reference.md',
+    'Examples': 'docs/examples.md'
+}
+
+import_multiple_files(files)
+```
+
+## GitHub Actions
+
+### Update Docs on Push
+
+```yaml
+name: Update Confluence Docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+
+jobs:
+  update-confluence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Import to Confluence
+        run: |
+          curl -X POST "${{ secrets.CONFLUENCE_API_ENDPOINT }}" \
+            -H "Authorization: Bearer ${{ secrets.CONFLUENCE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d @- <<EOF
+          {
+            "spaceId": "DOCS",
+            "parentId": "123456789",
+            "pageTitle": "API Documentation",
+            "content": $(cat docs/api.md | jq -Rs .),
+            "overwrite": true
+          }
+          EOF
+```
+
+### Multiple Files
+
+```yaml
+name: Sync Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Import README
+        run: |
+          CONTENT=$(cat README.md | jq -Rs .)
+          curl -X POST "${{ secrets.CONFLUENCE_API_ENDPOINT }}" \
+            -H "Authorization: Bearer ${{ secrets.CONFLUENCE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"spaceId\":\"DOCS\",\"parentId\":\"123456789\",\"pageTitle\":\"README\",\"content\":$CONTENT,\"overwrite\":true}"
+
+      - name: Import API Docs
+        run: |
+          CONTENT=$(cat docs/api.md | jq -Rs .)
+          curl -X POST "${{ secrets.CONFLUENCE_API_ENDPOINT }}" \
+            -H "Authorization: Bearer ${{ secrets.CONFLUENCE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"spaceId\":\"DOCS\",\"parentId\":\"123456789\",\"pageTitle\":\"API Reference\",\"content\":$CONTENT,\"overwrite\":true}"
+```
+
+## GitLab CI/CD
+
+```yaml
+stages:
+  - deploy-docs
+
+deploy-confluence:
+  stage: deploy-docs
+  only:
+    - main
+  script:
+    - |
+      curl -X POST "$CONFLUENCE_API_ENDPOINT" \
+        -H "Authorization: Bearer $CONFLUENCE_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d "{
+          \"spaceId\": \"DOCS\",
+          \"parentId\": \"123456789\",
+          \"pageTitle\": \"API Documentation\",
+          \"content\": $(cat docs/api.md | jq -Rs .),
+          \"overwrite\": true
+        }"
+```
+
+## Go
+
+```go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "os"
+)
+
+type ConfluenceRequest struct {
+    SpaceID   string `json:"spaceId"`
+    ParentID  string `json:"parentId"`
+    PageTitle string `json:"pageTitle"`
+    Content   string `json:"content"`
+    Overwrite bool   `json:"overwrite"`
+}
+
+func importToConfluence(title, content string, overwrite bool) error {
+    endpoint := os.Getenv("CONFLUENCE_API_ENDPOINT")
+    token := os.Getenv("CONFLUENCE_API_TOKEN")
+
+    reqBody := ConfluenceRequest{
+        SpaceID:   "DOCS",
+        ParentID:  "123456789",
+        PageTitle: title,
+        Content:   content,
+        Overwrite: overwrite,
+    }
+
+    jsonData, err := json.Marshal(reqBody)
+    if err != nil {
+        return err
+    }
+
+    req, err := http.NewRequest("POST", endpoint, bytes.NewBuffer(jsonData))
+    if err != nil {
+        return err
+    }
+
+    req.Header.Set("Authorization", "Bearer "+token)
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        return err
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+
+    if resp.StatusCode == 200 || resp.StatusCode == 201 {
+        fmt.Printf("✓ Success: %s\n", string(body))
+    } else {
+        fmt.Printf("✗ Error: %s\n", string(body))
+    }
+
+    return nil
+}
+
+func main() {
+    content, err := ioutil.ReadFile("README.md")
+    if err != nil {
+        fmt.Println("Error reading file:", err)
+        return
+    }
+
+    err = importToConfluence("Project README", string(content), true)
+    if err != nil {
+        fmt.Println("Error:", err)
+    }
+}
+```
+
+## Related Documentation
+
+- [API Reference](/docs/markdown-importer-for-confluence/rest-api/api-reference) - Detailed endpoint documentation
+- [Best Practices](/docs/markdown-importer-for-confluence/rest-api/best-practices) - Production recommendations
+- [Troubleshooting](/docs/markdown-importer-for-confluence/rest-api/troubleshooting) - Common issues and solutions

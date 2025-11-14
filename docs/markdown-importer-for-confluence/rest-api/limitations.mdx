@@ -1,0 +1,114 @@
+---
+title: Limitations
+description: API usage limits and constraints
+order: 4
+---
+
+# API Limitations
+
+## Token Limits
+
+- **Maximum tokens per instance**: 50 tokens
+- **Maximum expiration period**: 30 days
+- **Minimum expiration period**: 1 day
+- **Token visibility**: Tokens shown only once at creation
+
+## Request Limits
+
+- **Content size**: Subject to Confluence page size limits (approximately 1MB)
+- **Rate limiting**: Subject to Atlassian API rate limits
+- **Concurrent requests**: No explicit limit, but recommended to implement backoff strategy
+
+## Content Limitations
+
+- **Markdown format**: Must be valid markdown string
+- **Empty content**: Content cannot be empty or whitespace-only
+- **Special characters**: Properly escape special characters in JSON payload
+
+## Feature Limitations
+
+- **Page creation only**: Cannot create blog posts or other content types
+- **No attachment support**: Attachments must be uploaded separately
+- **No version control**: Updates increment version but don't preserve history details
+- **Single page operations**: Bulk operations require multiple API calls
+
+## License Requirements
+
+- **Active license required**: Token creation requires active license
+- **License validation**: Tokens validate license status at creation time
+- **Token persistence**: Tokens remain valid until expiration even if license expires after creation
+
+## Workarounds
+
+### Large Content
+
+If you need to import content larger than 1MB:
+
+1. Split the content into multiple pages
+2. Use a hierarchical structure with parent/child pages
+3. Link pages together using markdown links
+
+### Attachments
+
+To add attachments to pages created via the API:
+
+1. Create the page using the Markdown Importer API
+2. Use Confluence's REST API to upload attachments
+3. Reference the attachment ID in subsequent page updates
+
+**Example:**
+
+```javascript
+// Step 1: Create page via Markdown Importer API
+const pageResponse = await createPage({
+  spaceId: 'DOCS',
+  parentId: '123456789',
+  pageTitle: 'My Page',
+  content: '# My Page\n\nContent here...'
+});
+
+// Step 2: Upload attachment via Confluence API
+const formData = new FormData();
+formData.append('file', fileBuffer, 'document.pdf');
+
+await fetch(`https://your-site.atlassian.net/wiki/rest/api/content/${pageId}/child/attachment`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${confluenceToken}`,
+    'X-Atlassian-Token': 'no-check'
+  },
+  body: formData
+});
+```
+
+### Bulk Operations
+
+For importing multiple pages efficiently:
+
+```javascript
+// Use rate-limited batch processing
+const pLimit = require('p-limit');
+const limit = pLimit(3); // Max 3 concurrent requests
+
+const pages = [/* your pages */];
+
+const results = await Promise.all(
+  pages.map(page =>
+    limit(() => importToConfluence(page))
+  )
+);
+```
+
+### Version History
+
+While the API doesn't preserve detailed version history, you can:
+
+1. Maintain your own changelog in the page content
+2. Use git to track markdown file changes
+3. Reference git commit hashes in page metadata
+
+## Related Documentation
+
+- [API Reference](/docs/markdown-importer-for-confluence/rest-api/api-reference) - Endpoint details
+- [Best Practices](/docs/markdown-importer-for-confluence/rest-api/best-practices) - Production recommendations
+- [FAQ](/docs/markdown-importer-for-confluence/rest-api/faq) - Common questions

@@ -1,0 +1,63 @@
+---
+title: Known Issues & Limitations
+description: List of known issues, limitations, and workarounds for Markdown Importer for Confluence
+order: 4
+---
+
+# Known Issues & Limitations
+
+Below is a list of current known issues and limitations for Markdown Importer for Confluence. We are actively working to resolve these and improve the experience.
+
+## 1. Large File Imports
+
+- **Issue:** Importing very large markdown files (over 2MB) may fail or take a long time.
+- **Workaround:** Split large files into smaller sections before importing.
+
+## 2. Unsupported Markdown Extensions
+
+- **Issue:** Some advanced markdown extensions (e.g., custom containers, footnotes) may not render as expected.
+- **Workaround:** Stick to standard markdown syntax for best results.
+
+## 3. Image Upload Failures
+
+- **Issue:** Occasionally, image uploads may fail due to network or Confluence API limits.
+- **Workaround:** Retry the import or upload images manually if needed.
+
+## 4. Attachment Size Limits
+
+- **Issue:** Confluence enforces a maximum file size for attachments (typically 100MB).
+- **Workaround:** Compress or split large attachments before importing.
+
+## 5. Table Formatting
+
+- **Issue:** Complex tables with merged cells or advanced formatting may not render perfectly.
+- **Workaround:** Simplify tables or adjust formatting after import.
+
+## 6. Task List Conversion
+
+- **Issue:** Some markdown task lists may not convert to Confluence checkboxes correctly.
+- **Workaround:** Manually adjust checkboxes after import if needed.
+
+## 7. Link Conversion
+
+- **Issue:** Relative links between markdown files may not always resolve correctly in Confluence.
+- **Workaround:** Update links after import to ensure they point to the correct Confluence pages.
+
+## 8. Import Performance on Very Large Batches
+
+- **Issue:** Very large imports may take longer due to Confluence API rate limits.
+- **Workaround:** Run imports during off-peak hours or split into logical groups for faster completion.
+
+## 9. ZIP & Hierarchy Edge Cases
+
+- **Issue:** Deeply nested directories or unusual characters in file names may cause unexpected page titles or hierarchy.
+- **Workaround:** Keep folder depth reasonable and use standard ASCII characters where possible.
+
+## 10. Space-wide Name Uniqueness
+
+- **Issue:** Confluence requires page titles to be unique within a space. Similarly, top-level folders that map to parent pages must also have unique names within that space.
+- **Workaround:** Ensure that files and folders intended to become pages have unique names per space. If duplicates exist, rename them before import or adjust the import target structure.
+
+---
+
+If you encounter an issue not listed here, please contact our support team. We appreciate your feedback!

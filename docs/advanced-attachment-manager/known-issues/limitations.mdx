@@ -1,0 +1,68 @@
+---
+title: Limitations
+description: Learn about current limitations and known issues
+---
+
+# Limitations
+
+This page documents the current limitations of Advanced Attachment Manager for Confluence.
+
+## Attachment Version Size Limitation
+
+Due to Atlassian API limitations:
+
+- The file size shown for attachment versions is not accurate
+- The displayed size is always from the latest version
+- This affects all version-related features and reporting
+- We have raised this issue with Atlassian and are actively discussing a solution
+
+### Impact
+
+- Version size comparisons may be inaccurate
+- Storage calculations for older versions may be incorrect
+- Bulk operations based on version size may not be precise
+
+### Workaround
+
+- Use the latest version size as a reference
+- For precise version size information, download the specific version
+- Monitor storage usage through Confluence's native tools
+
+## Atlassian Platform Limitations
+
+### Storage and Access
+
+- Files must be uploaded to Confluence before they can be managed
+- External storage is not supported
+- Custom CSP (Content Security Policy) must be configured if loading assets from your own domain
+
+### API Restrictions
+
+- Rate limits apply to bulk operations
+- Some operations may be slower in large instances
+- Certain metadata may not be available through the API
+
+## Best Practices
+
+1. **Regular Verification**: Periodically verify file sizes manually
+2. **Backup Important**: Keep backups of critical files
+3. **Monitor Storage**: Use Confluence's native tools for storage monitoring
+4. **Stay Updated**: Check release notes for new features and improvements
+5. **Report Issues**: Contact support if you encounter any problems
+
+## Future Improvements
+
+We are actively working with Atlassian to:
+
+- Improve version size accuracy
+- Enhance API capabilities
+- Add more detailed reporting features
+- Implement better storage management tools
+
+## Getting Help
+
+If you encounter any limitations that impact your workflow:
+
+1. Check our [Known Issues](/docs/advanced-attachment-manager/known-issues) page
+2. Visit our [Support Portal](https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51)
+3. Contact [support@yamuno.com](mailto:support@yamuno.com)

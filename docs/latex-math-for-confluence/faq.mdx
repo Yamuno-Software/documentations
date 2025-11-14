@@ -1,0 +1,396 @@
+---
+title: FAQ
+order: 5
+---
+
+# Frequently Asked Questions (FAQ)
+
+Find answers to the most common questions about LaTeX Math for Confluence.
+
+## General Questions
+
+### What is LaTeX Math for Confluence?
+
+LaTeX Math for Confluence is a Forge app that enables you to create beautiful mathematical equations in Confluence using standard LaTeX syntax. It features real-time preview, access control, and both inline and block equation styles.
+
+### Is this a paid app?
+
+No, LaTeX Math for Confluence is completely free! You can install and use it without any cost or trial limitations.
+
+### Which Confluence versions are supported?
+
+LaTeX Math for Confluence is designed for **Confluence Cloud** only. It is not available for Confluence Server or Data Center.
+
+### Do I need to know LaTeX?
+
+Basic LaTeX knowledge is helpful but not required. The app includes:
+- Formula library with common equations
+- Live preview to see your results
+- Syntax examples in documentation
+- Helpful error messages
+
+---
+
+## Installation & Setup
+
+### How do I install the app?
+
+1. Go to Atlassian Marketplace
+2. Search for "LaTeX Math for Confluence"
+3. Click "Get it now" to install for free
+4. Follow the installation prompts
+
+See our [Installation Guide](/docs/latex-math-for-confluence/features/getting-started/installation) for detailed steps.
+
+### Do I need administrator access to install?
+
+Yes, you must be a **Confluence Administrator** to install apps. Regular users cannot install apps.
+
+### How long does installation take?
+
+Installation typically takes 2-5 minutes. The app will be available immediately after installation completes.
+
+### Are there any usage limitations?
+
+No! LaTeX Math for Confluence is completely free with no limitations on the number of equations, users, or features.
+
+---
+
+## Usage Questions
+
+### How do I add a LaTeX equation?
+
+**Quick Method:**
+1. Edit a Confluence page
+2. Type `/latex`
+3. Select the macro
+4. Enter your LaTeX equation
+5. Save
+
+See [Quick Start Guide](/docs/latex-math-for-confluence/features/getting-started/index) for more details.
+
+### What's the difference between inline and block macros?
+
+**Inline Macro:**
+- Appears within text
+- Flows with paragraphs
+- For simple equations
+- Example: The formula $E = mc^2$ in a sentence
+
+**Block Macro:**
+- Standalone display
+- Centered on page
+- For complex equations
+- See [Block Macro Guide](/docs/latex-math-for-confluence/features/features/block-macro)
+
+### Can I use standard LaTeX syntax?
+
+Yes! We support standard LaTeX math syntax including:
+- `$...$` for inline math
+- `$$...$$` for display math
+- `\[...\]` for display math
+- `\(...\)` for inline math
+- Standard LaTeX environments (equation, align, matrix, etc.)
+
+### What LaTeX packages are supported?
+
+We use **KaTeX** for rendering, which supports:
+- Most standard LaTeX math commands
+- Common symbols and operators
+- Matrices and arrays
+- Aligned equations
+- Fractions, roots, integrals, sums
+
+Not supported:
+- TikZ/PGF graphics
+- Custom packages
+- Non-math LaTeX
+
+See [KaTeX Supported Functions](https://katex.org/docs/supported.html) for a complete list.
+
+---
+
+## Permissions & Security
+
+### Who can view LaTeX equations?
+
+Anyone with permission to view the Confluence page can see the rendered equations. View access cannot be restricted separately.
+
+### Who can edit LaTeX equations?
+
+This depends on your [Access Control](/docs/latex-math-for-confluence/features/configuration/access-control) settings:
+- **Allow All Mode:** Anyone with page edit permission
+- **Restricted Mode:** Only whitelisted users
+- **Admins:** Always have access
+
+### How do I restrict editing?
+
+1. Go to app configuration
+2. Navigate to Permissions tab
+3. Enable "Restrict edit access"
+4. Add users to whitelist
+5. Save changes
+
+See [Access Control Guide](/docs/latex-math-for-confluence/features/configuration/access-control).
+
+### Can I use groups instead of individual users?
+
+Group-based permissions are coming in a future update. Currently, you must add users individually to the whitelist.
+
+### What happens if someone without permission tries to edit?
+
+They will see an "Access Denied" message and won't be able to open the editor. The equation will render normally for viewing.
+
+---
+
+## Technical Questions
+
+### Does this work offline?
+
+No, LaTeX Math for Confluence requires an internet connection to:
+- Load the editor
+- Render equations
+- Save changes
+
+### Will equations show in exports?
+
+**PDF Export:** ✅ Yes, equations render in exported PDFs
+
+**Word Export:** ⚠️ Equations may show as images or plain text depending on Confluence's export method
+
+**HTML Export:** ✅ Yes, equations render correctly
+
+### Does it work on mobile?
+
+**Viewing:** ✅ Yes, equations render perfectly on mobile devices
+
+**Editing:** ✅ Yes, the editor works on tablets and phones with responsive interface
+
+### What browsers are supported?
+
+- ✅ Chrome 90+
+- ✅ Firefox 88+
+- ✅ Safari 14+
+- ✅ Edge 90+
+- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
+
+### Is there a limit on equation size?
+
+**Practical Limits:**
+- Up to 500 lines of LaTeX code
+- Matrices up to 20×20
+- No hard limits, but very large equations may render slowly
+
+### Can I use color in equations?
+
+Yes! Use LaTeX color commands:
+```latex
+\textcolor{red}{x} + \textcolor{blue}{y}
+```
+
+### Does it support chemical equations?
+
+Yes, basic chemical notation is supported through LaTeX commands like `\ce{}`.
+
+---
+
+## Performance Questions
+
+### Will many equations slow down my pages?
+
+LaTeX Math is optimized for performance:
+- ⚡ Fast rendering with KaTeX
+- 💾 Efficient caching
+- 🚀 Minimal impact on page load
+
+Typical pages with 10-20 equations load normally. Pages with 50+ equations may have slightly slower load times.
+
+### How can I improve performance?
+
+1. **Keep equations simple** - Avoid unnecessary complexity
+2. **Use appropriate macro types** - Inline for simple, block for complex
+3. **Limit per page** - Consider 20-30 equations as a soft maximum
+4. **Optimize content** - Remove unused or duplicate equations
+
+---
+
+## Troubleshooting
+
+### My equation won't render
+
+**Common causes:**
+1. **Syntax error** - Check for missing braces, typos
+2. **Unsupported command** - Verify command is KaTeX-compatible
+3. **Browser issue** - Try refreshing or different browser
+4. **Cache problem** - Clear browser cache
+
+**Solution:** Use the live preview to identify and fix errors.
+
+### I see "Access Denied" when editing
+
+**Cause:** You're not in the whitelist
+
+**Solutions:**
+1. Ask admin to add you to whitelist
+2. Check if restricted mode is enabled
+3. Verify you're logged in correctly
+
+See [Access Control & Permissions](/docs/latex-math-for-confluence/features/configuration/access-control).
+
+### The editor won't open
+
+**Troubleshooting steps:**
+1. **Refresh the page** (Ctrl/Cmd + R)
+2. **Check browser console** for errors
+3. **Try incognito mode** to rule out extensions
+4. **Verify app is enabled** in Manage Apps
+5. **Contact support** if issue persists
+
+### Equations look different on mobile
+
+**This is normal.** Equations may scale slightly differently on mobile to fit the screen. They remain readable and functional.
+
+---
+
+## Migration Questions
+
+### Can I import equations from other LaTeX apps?
+
+**Migration feature coming soon!**
+
+Currently:
+- Manual copy/paste of LaTeX code works
+- Export from old app, import to new macro
+
+Future:
+- Automated migration tools
+- Bulk import
+- Format conversion
+
+See [Migration Guide](/docs/latex-math-for-confluence/features/migration/index) for updates.
+
+### How do I migrate from another LaTeX app?
+
+**Current process:**
+1. Copy LaTeX code from old macro
+2. Insert new LaTeX Math macro
+3. Paste code
+4. Verify rendering
+5. Delete old macro
+
+### What happens to old equations if I uninstall?
+
+**Warning:** Uninstalling removes the app but leaves placeholder macros on your pages. Equations will not render.
+
+**Before uninstalling:**
+- Export important pages
+- Consider migration to another app
+- Back up LaTeX code if needed
+
+---
+
+## Support Questions
+
+### How do I get help?
+
+1. **Documentation:** Start with these docs
+2. **Support Portal:** [https://yamuno.atlassian.net/servicedesk/customer/portals](https://yamuno.atlassian.net/servicedesk/customer/portals)
+3. **Community:** Atlassian Community forums
+4. **Email:** Through support portal
+
+### What's the support response time?
+
+- **Critical issues:** Within 24 hours
+- **General questions:** Within 48 hours
+- **Feature requests:** Acknowledged within 1 week
+
+### Can I request features?
+
+Absolutely! We welcome feature requests:
+1. Submit via [Support Portal](https://yamuno.atlassian.net/servicedesk/customer/portals)
+2. Describe your use case
+3. We'll evaluate and respond
+
+### Is there a roadmap?
+
+Yes! Check our documentation for upcoming features or contact support for the full roadmap.
+
+---
+
+## Data & Privacy
+
+### Where is my data stored?
+
+All data is stored on Atlassian's Confluence Cloud infrastructure. We don't store LaTeX content separately.
+
+### Is my content private?
+
+Yes, your LaTeX equations are:
+- Stored securely on Confluence
+- Subject to Confluence's security model
+- Not shared with third parties
+- GDPR compliant
+
+### What data does the app collect?
+
+**We collect:**
+- Usage statistics (macro counts)
+- Error logs for debugging
+
+**We DON'T collect:**
+- LaTeX equation content
+- Personal user data
+- Viewing behavior
+- Page content
+
+### Is it GDPR compliant?
+
+Yes, LaTeX Math for Confluence is GDPR compliant and follows Atlassian's data protection standards.
+
+---
+
+## Best Practices
+
+### When should I use inline vs block macros?
+
+**Use Inline for:**
+- Variables in sentences
+- Simple formulas
+- Inline notation
+- Text-integrated equations
+
+**Use Block for:**
+- Important equations
+- Complex formulas
+- Multi-line expressions
+- Equations needing emphasis
+
+### How many equations should I put on one page?
+
+**Recommendations:**
+- **Optimal:** 10-20 equations per page
+- **Acceptable:** Up to 50 equations
+- **Avoid:** More than 50 (consider splitting)
+
+### Should I use delimiters?
+
+It's optional! The macros work with or without delimiters:
+- With delimiters: More portable to other LaTeX tools
+- Without: Simpler, cleaner code
+
+Choose based on your needs.
+
+---
+
+## Still Have Questions?
+
+Can't find your answer? We're here to help:
+
+- 💬 [Contact Support](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📚 [View All Documentation](/docs/latex-math-for-confluence/features/README)
+- 🌐 [Visit Our Website](https://yamuno.com)
+- 📧 Submit a question through our support portal
+
+---
+
+**Last Updated:** January 2025

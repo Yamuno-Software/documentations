@@ -1,0 +1,454 @@
+---
+title: Block Macro
+order: 3
+---
+
+# Block Macro
+
+Create prominent, display-style mathematical equations that stand out from your content using the LaTeX Math Block Macro.
+
+## What is the Block Macro?
+
+The **Block Macro** renders mathematical equations in **display mode** - centered, larger, and separated from surrounding text. Perfect for important formulas, complex equations, and multi-line mathematical expressions.
+
+## When to Use Block Macros
+
+Use block macros when:
+- ✅ Displaying important equations
+- ✅ Creating multi-line mathematical expressions
+- ✅ Showing complex formulas that need emphasis
+- ✅ Using matrices, systems of equations, or aligned expressions
+- ✅ Presenting theorems and proofs
+
+**Use inline macros instead for:**
+- ❌ Simple variables within text
+- ❌ Short formulas in sentences
+- ❌ Inline mathematical notation
+
+---
+
+## How to Add a Block Macro
+
+### Method 1: Slash Command (Recommended)
+
+1. Open a Confluence page in **edit mode**
+2. Position your cursor on a new line
+3. Type:
+   ```
+   /latex
+   ```
+4. Select **"LaTeX Math for Confluence"** or **"LaTeX Math for Confluence (Block)"**
+5. Enter your LaTeX equation
+6. Save the macro
+
+### Method 2: Insert Menu
+
+1. Open a page in **edit mode**
+2. Click **"Insert"** → **"Other macros"**
+3. Search for **"latex"**
+4. Select **"LaTeX Math for Confluence"**
+5. Click **"Insert"**
+
+---
+
+## Writing Block Equations
+
+### Syntax Options
+
+The block macro supports multiple LaTeX syntaxes:
+
+#### Display Math Delimiters
+```latex
+\[
+E = mc^2
+\]
+```
+
+#### Double Dollar Signs
+```latex
+$$
+E = mc^2
+$$
+```
+
+#### No Delimiters (Automatic Display Mode)
+```latex
+E = mc^2
+```
+> The macro automatically renders in display mode
+
+#### LaTeX Environments
+```latex
+\begin{equation}
+E = mc^2
+\end{equation}
+```
+
+---
+
+## Alignment Options
+
+Block macros support three alignment modes:
+
+### Center (Default)
+Equations are centered on the page.
+
+### Left Align
+Equations align to the left margin.
+
+### Right Align
+Equations align to the right margin.
+
+**To change alignment:**
+1. Edit the macro
+2. Use the alignment buttons in the preview pane
+3. Save changes
+
+---
+
+## Examples
+
+### 1. Simple Equations
+
+**LaTeX:**
+```latex
+\[
+E = mc^2
+\]
+```
+
+**Result:** Energy-mass equivalence displayed prominently
+
+---
+
+### 2. Fractions and Roots
+
+**LaTeX:**
+```latex
+\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]
+```
+
+**Result:** The quadratic formula in display mode
+
+---
+
+### 3. Integrals
+
+**LaTeX:**
+```latex
+\[
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+\]
+```
+
+**Result:** Gaussian integral
+
+---
+
+### 4. Summations
+
+**LaTeX:**
+```latex
+\[
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+\]
+```
+
+**Result:** Sum of first n natural numbers
+
+---
+
+### 5. Matrices
+
+**LaTeX:**
+```latex
+\[
+A = \begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+\]
+```
+
+**Result:** 2×2 matrix
+
+---
+
+### 6. Systems of Equations
+
+**LaTeX:**
+```latex
+\[
+\begin{cases}
+x + y = 5 \\
+2x - y = 1
+\end{cases}
+\]
+```
+
+**Result:** System of linear equations
+
+---
+
+### 7. Aligned Equations
+
+**LaTeX:**
+```latex
+\[
+\begin{align}
+f(x) &= x^2 + 2x + 1 \\
+&= (x + 1)^2
+\end{align}
+\]
+```
+
+**Result:** Multi-line aligned equation
+
+---
+
+### 8. Limits
+
+**LaTeX:**
+```latex
+\[
+\lim_{x \to \infty} \frac{1}{x} = 0
+\]
+```
+
+**Result:** Limit notation
+
+---
+
+### 9. Partial Derivatives
+
+**LaTeX:**
+```latex
+\[
+\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
+\]
+```
+
+**Result:** Wave equation
+
+---
+
+### 10. Complex Formulas
+
+**LaTeX:**
+```latex
+\[
+\oint_C \vec{F} \cdot d\vec{r} = \iint_S (\nabla \times \vec{F}) \cdot d\vec{S}
+\]
+```
+
+**Result:** Stokes' theorem
+
+---
+
+## Advanced Features
+
+### Multi-line Equations
+
+Use environments like `align`, `gather`, or `multline`:
+
+```latex
+\begin{align}
+a^2 + b^2 &= c^2 \\
+\sin^2\theta + \cos^2\theta &= 1 \\
+e^{i\pi} + 1 &= 0
+\end{align}
+```
+
+### Matrices and Arrays
+
+Multiple matrix styles are supported:
+
+```latex
+% Regular matrix
+\begin{matrix}
+a & b \\
+c & d
+\end{matrix}
+
+% Parentheses
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+
+% Brackets
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+
+% Vertical bars (determinant)
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
+```
+
+### Chemical Equations
+
+```latex
+\[
+\ce{CO2 + H2O -> H2CO3}
+\]
+```
+
+### Text in Equations
+
+```latex
+\[
+f(x) = \begin{cases}
+x^2 & \text{if } x \geq 0 \\
+-x^2 & \text{if } x < 0
+\end{cases}
+\]
+```
+
+---
+
+## Best Practices
+
+### ✅ Do's
+
+1. **Use for important equations** - Make key formulas stand out
+2. **Add spacing** - Leave blank lines before/after block macros
+3. **Organize content** - Use one equation per block for clarity
+4. **Test rendering** - Preview before saving
+5. **Use proper environments** - Choose the right LaTeX environment
+
+### ❌ Don'ts
+
+1. **Don't overuse** - Too many blocks can overwhelm readers
+2. **Avoid inline delimiters** - Don't use `$...$` in block macros
+3. **Don't mix content** - Keep equations separate from text
+4. **No excessive whitespace** - Clean LaTeX is better
+
+---
+
+## Editing Block Macros
+
+### Edit Existing Macro
+
+1. **Hover** over the equation block
+2. Click the **edit icon** (⚙️)
+3. Modify your LaTeX in the editor
+4. Use **Live Preview** to verify changes
+5. **Save** when satisfied
+
+### Change Alignment
+
+1. Open the macro editor
+2. Click alignment buttons in the preview pane:
+   - **Left** align button
+   - **Center** align button
+   - **Right** align button
+3. Save changes
+
+---
+
+## Mixed Content
+
+You can combine text and equations in a single block:
+
+```latex
+Consider the equation:
+\[
+E = mc^2
+\]
+where $E$ is energy, $m$ is mass, and $c$ is the speed of light.
+```
+
+> **Note:** Inline equations (`$...$`) within block macros work as expected.
+
+---
+
+## Troubleshooting
+
+### Equation Not Centering
+
+**Problem:** Block equation appears left-aligned
+
+**Solution:**
+1. Open the macro editor
+2. Check alignment setting in preview pane
+3. Select **Center** alignment
+4. Save changes
+
+### Line Breaks Not Working
+
+**Problem:** Multi-line equations appear on one line
+
+**Solution:**
+1. Use proper LaTeX environments (`align`, `gather`)
+2. Use `\\` for line breaks within environments
+3. Don't use `\n` or `\newline`
+
+### Matrix Not Rendering
+
+**Problem:** Matrix shows as text
+
+**Solution:**
+1. Verify you're using `\begin{matrix}...\end{matrix}`
+2. Check for proper `\\` line breaks
+3. Use `&` for column separation
+4. Ensure balanced braces
+
+### Spacing Too Tight
+
+**Problem:** Equations too close to text
+
+**Solution:**
+1. Add blank lines before/after the macro in Confluence
+2. Don't add extra LaTeX spacing commands
+3. Let Confluence handle paragraph spacing
+
+---
+
+## Performance Considerations
+
+- ✅ Block macros handle complex equations efficiently
+- ✅ Multiple blocks on one page are supported
+- ⚠️ Very large matrices (>10×10) may slow rendering
+- ⚠️ Limit to 20-30 block macros per page for best performance
+
+---
+
+## Common Use Cases
+
+### 1. Textbook Equations
+Display important formulas prominently in educational content.
+
+### 2. Research Documentation
+Present theorems, proofs, and derivations clearly.
+
+### 3. Engineering Specifications
+Show calculations and formulas in technical docs.
+
+### 4. Scientific Papers
+Format equations according to academic standards.
+
+### 5. Data Science
+Display statistical formulas and models.
+
+---
+
+## Related Documentation
+
+- 📖 [Inline Macro](/docs/latex-math-for-confluence/features/inline-macro) - For inline equations
+- 📖 [Live Preview](/docs/latex-math-for-confluence/features/live-preview) - Real-time rendering
+- 📖 [LaTeX Syntax Guide](/docs/latex-math-for-confluence/reference/latex-syntax)
+- ❓ [FAQ](/docs/latex-math-for-confluence/faq)
+
+---
+
+## Need Help?
+
+- 💬 [Contact Support](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📚 [View All Documentation](/docs/latex-math-for-confluence/INDEX)
+- 📖 [LaTeX Tutorial](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)

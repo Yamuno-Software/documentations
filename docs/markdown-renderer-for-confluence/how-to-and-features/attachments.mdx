@@ -1,0 +1,53 @@
+---
+title: Attachments
+description: Learn how to work with attachments in your markdown content
+---
+
+# Attachments
+
+Markdown Renderer for Confluence allows you to seamlessly integrate attachments from your Confluence instance into your markdown content.
+
+## Adding Attachments
+
+1. Click the attachment icon in the toolbar
+2. Browse your Confluence attachments
+3. Select the file you want to embed
+4. The attachment will be automatically inserted into your markdown
+
+## Supported Attachment Types
+
+- Images (PNG, JPG, GIF, SVG)
+- Documents (PDF, DOC, DOCX)
+- Spreadsheets (XLS, XLSX)
+- Presentations (PPT, PPTX)
+- And other Confluence-supported file types
+
+## Image Attachments
+
+### Basic Image Syntax
+
+```
+![Alt text](attachment:filename.png)
+```
+
+### Image with Title
+
+```
+![Alt text](attachment:filename.png "Image title")
+```
+
+## Best Practices
+
+1. Use descriptive alt text for images
+2. Keep file sizes reasonable for better performance
+3. Use the attachment picker for secure file embedding
+4. Verify attachment permissions before sharing
+5. Update attachment references if files are moved
+
+## Limitations
+
+Due to Atlassian's data egress policy:
+
+- All attachments must be hosted within Confluence
+- External file URLs cannot be used
+- Files must be uploaded to Confluence before embedding

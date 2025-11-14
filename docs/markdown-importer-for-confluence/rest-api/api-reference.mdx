@@ -1,0 +1,110 @@
+---
+title: API Reference
+description: Endpoints, request formats, and response codes
+order: 3
+---
+
+# API Reference
+
+## Endpoint
+
+Your unique API endpoint URL is displayed in the API Token Management page under "API Documentation" section.
+
+## Request Format
+
+### HTTP Method
+
+```
+POST
+```
+
+### Headers
+
+```
+Content-Type: application/json
+Authorization: Bearer YOUR_API_TOKEN
+```
+
+### Request Body
+
+#### Required Fields
+
+| Field         | Type   | Description                            |
+| ------------- | ------ | -------------------------------------- |
+| **spaceId**   | string | The ID or key of the Confluence space  |
+| **parentId**  | string | The ID of the parent page              |
+| **pageTitle** | string | The title of the page to create/update |
+| **content**   | string | Markdown content to import             |
+
+#### Optional Fields
+
+| Field         | Type    | Default | Description                                                                                       |
+| ------------- | ------- | ------- | ------------------------------------------------------------------------------------------------- |
+| **overwrite** | boolean | false   | If true, updates existing page with same title and parent. If false, returns error if page exists |
+
+### Example Request Body
+
+```json
+{
+  "spaceId": "DOCS",
+  "parentId": "123456789",
+  "pageTitle": "API Integration Guide",
+  "content": "# API Integration\n\nThis guide covers how to integrate with our API.\n\n## Authentication\n\nUse Bearer tokens for authentication.",
+  "overwrite": false
+}
+```
+
+## Response Codes
+
+### Success Responses
+
+| Status Code | Response Key | Description                                        |
+| ----------- | ------------ | -------------------------------------------------- |
+| 201         | created      | Page created successfully                          |
+| 200         | updated      | Page updated successfully (when overwrite is true) |
+
+**Success Response Body:**
+
+```json
+{
+  "body": "Success: Page created successfully"
+}
+```
+
+### Error Responses
+
+| Status Code | Response Key    | Description                                           | Solution                                         |
+| ----------- | --------------- | ----------------------------------------------------- | ------------------------------------------------ |
+| 400         | bad-request     | Missing required fields or invalid format             | Verify all required fields are present and valid |
+| 400         | already-exists  | Page with same title exists (when overwrite is false) | Set overwrite to true or use different title     |
+| 401         | unauthorized    | Missing or invalid token                              | Check Authorization header format                |
+| 402         | license-expired | License inactive when token created                   | Contact admin to renew license                   |
+| 403         | forbidden       | Token expired                                         | Create a new token                               |
+| 404         | not-found       | Parent page or space not found                        | Verify **spaceId** and **parentId** are correct  |
+| 500         | internal-error  | Server error                                          | Retry request, contact support if persists       |
+
+**Error Response Example:**
+
+```json
+{
+  "body": "Error: Unauthorized - Missing or invalid authorization header. Please provide a valid Bearer token."
+}
+```
+
+## Finding Space and Page IDs
+
+![SpaceId](https://marketplace.atlassian.com/product-listing/files/46235683-33cf-4868-a0d2-b6a958616d0e?width=960&height=600)
+The easiest way to find the correct **Space ID** and **Parent Page ID** is through the Markdown Importer app itself:
+
+1. Open **Markdown Importer for Confluence** in your Confluence instance
+2. Use the **Space selector** dropdown - the space ID will be visible when you select a space
+3. Use the **Page selector** dropdown to choose a parent page - the page ID will be displayed in the selection
+
+This ensures you're using the exact IDs that the API expects and avoids any confusion with space keys vs. space IDs.
+
+## Related Documentation
+
+- [Limitations](/docs/markdown-importer-for-confluence/rest-api/limitations) - API usage limits and constraints
+- [Examples](/docs/markdown-importer-for-confluence/rest-api/examples) - Code samples in multiple languages
+- [Troubleshooting](/docs/markdown-importer-for-confluence/rest-api/troubleshooting) - Common issues and solutions
+- [Best Practices](/docs/markdown-importer-for-confluence/rest-api/best-practices) - Production recommendations

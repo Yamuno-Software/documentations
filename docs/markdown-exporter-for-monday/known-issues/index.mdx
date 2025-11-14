@@ -1,0 +1,162 @@
+---
+title: Known Issues
+description: Current limitations and workarounds
+order: 1
+---
+
+# Known Issues
+
+![Markdown Exporter for Monday.com](https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/Markdown%20Exporter.jpg)
+
+This page lists current known issues and limitations with Markdown Exporter for Monday.com, along with workarounds where available.
+
+## Current Limitations
+
+### Monday.com API Limitations
+
+**Rate Limiting**
+- Monday.com API has rate limits
+- Large exports may be throttled
+- **Workaround**: Export in smaller batches
+
+**Permission Restrictions**
+- Can only export docs you have access to
+- Private docs may be skipped
+- **Workaround**: Request access before exporting
+
+### File Type Support
+
+**Embedded Content**
+- Some embedded content may not export perfectly
+- Third-party embeds converted to links
+- **Workaround**: Download embeds separately
+
+**Advanced Formatting**
+- Complex tables may need manual adjustment
+- Some custom Monday.com widgets not supported
+- **Workaround**: Review and adjust post-export
+
+### Export Size Limitations
+
+**Browser Memory**
+- Very large workspaces may cause memory issues
+- Recommended max: 10,000 docs per export
+- **Workaround**: Export in sections
+
+**File Size**
+- Individual files over 100MB may fail
+- ZIP archives limited to 2GB
+- **Workaround**: Export large files separately
+
+## Platform-Specific Issues
+
+### Browser Compatibility
+
+**Safari**
+- Download prompts may not appear correctly
+- Use Chrome or Firefox for best experience
+
+**Mobile Browsers**
+- Not optimized for mobile export
+- Use desktop browser recommended
+
+### Attachment Handling
+
+**Large Attachments**
+- Files over 50MB may timeout
+- Video files may be slow to download
+- **Workaround**: Download large files manually
+
+**External Links**
+- Links to external Monday.com boards preserved as-is
+- May need manual updating
+- **Workaround**: Document external dependencies
+
+## Formatting Issues
+
+### Tables
+
+**Complex Tables**
+- Merged cells not supported in markdown
+- **Workaround**: Simplify table structure or use HTML
+
+**Large Tables**
+- Tables with many columns may not render well
+- **Workaround**: Consider splitting into multiple tables
+
+### Code Blocks
+
+**Syntax Highlighting**
+- Language detection is automatic
+- May need manual adjustment
+- **Workaround**: Specify language in markdown
+
+## Workarounds & Solutions
+
+### For Large Exports
+
+1. **Export by Section**
+   - Break workspace into logical sections
+   - Export each section separately
+   - Combine manually if needed
+
+2. **Incremental Exports**
+   - Enable incremental mode
+   - Export changes only
+   - Merge with previous exports
+
+### For Complex Formatting
+
+1. **Post-Processing**
+   - Review exported markdown
+   - Make manual adjustments
+   - Use find/replace for common issues
+
+2. **Pre-Export Cleanup**
+   - Simplify complex structures
+   - Remove unnecessary formatting
+   - Standardize doc structure
+
+### For Attachment Issues
+
+1. **Download Separately**
+   - Export docs without attachments
+   - Download large files manually
+   - Reference manually in markdown
+
+2. **Optimize Attachments**
+   - Compress large images
+   - Convert videos to lower resolution
+   - Remove unused attachments
+
+## Reporting Issues
+
+If you encounter issues not listed here:
+
+1. **Check Documentation**
+   - Review all documentation sections
+   - Check FAQs in product page
+
+2. **Contact Support**
+   - Email: support@yamuno.com
+   - Include error messages
+   - Describe steps to reproduce
+   - Attach screenshots if helpful
+
+3. **Provide Details**
+   - Browser and version
+   - Workspace size
+   - Export configuration
+   - Error messages
+
+## Upcoming Fixes
+
+We're working on addressing these issues:
+
+- Improved handling of large exports
+- Better embedded content support
+- Enhanced table formatting
+- Faster attachment downloads
+- More robust error handling
+
+Check the [Release Notes](/docs/markdown-exporter-for-monday/release-notes) for updates on these improvements.

@@ -1,0 +1,361 @@
+---
+title: Best Practices
+description: Security, performance, and error handling recommendations
+order: 6
+---
+
+# Best Practices
+
+## Security
+
+### Use Environment Variables
+
+Store sensitive credentials in environment variables, never hardcode them.
+
+**Linux/macOS:**
+
+```bash
+export CONFLUENCE_API_TOKEN="your-token-here"
+export CONFLUENCE_API_ENDPOINT="your-endpoint-here"
+```
+
+**Windows (PowerShell):**
+
+```powershell
+$env:CONFLUENCE_API_TOKEN="your-token-here"
+$env:CONFLUENCE_API_ENDPOINT="your-endpoint-here"
+```
+
+### Rotate Tokens Regularly
+
+- Create new tokens before old ones expire
+- Revoke unused tokens immediately
+- Use shorter expiration periods for higher security
+- Maintain a token rotation schedule
+
+### Use HTTPS Only
+
+- Never send tokens over unencrypted connections
+- Verify SSL certificates in production
+- Disable SSL verification only in development (never in production)
+
+### Implement Secret Management
+
+- Use vault systems for token storage (AWS Secrets Manager, HashiCorp Vault)
+- Never log tokens in application logs
+- Mask tokens in error messages
+- Encrypt tokens at rest
+
+### Token Security Checklist
+
+✓ Store tokens in environment variables or secret management systems
+✓ Use HTTPS for all API requests
+✓ Rotate tokens before expiration
+✓ Revoke unused tokens immediately
+✓ Use separate tokens for different environments
+✗ Never commit tokens to version control
+✗ Don't expose tokens in client-side code
+✗ Don't log tokens in application logs
+✗ Don't share tokens between teams or projects
+
+## Performance
+
+### Implement Retry Logic
+
+Use exponential backoff for failed requests:
+
+```javascript
+async function importWithRetry(payload, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await importToConfluence(payload);
+    } catch (error) {
+      if (i === maxRetries - 1) throw error;
+
+      const delay = 1000 * Math.pow(2, i); // Exponential backoff
+      console.log(`Retry ${i + 1}/${maxRetries} after ${delay}ms...`);
+      await sleep(delay);
+    }
+  }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+```
+
+### Batch Operations
+
+When importing multiple pages:
+
+- Add delays between requests (e.g., 500ms-1000ms)
+- Implement queue system for bulk imports
+- Monitor rate limits
+- Process in parallel with concurrency limit
+
+**Example:**
+
+```javascript
+async function importBatch(pages, concurrency = 3) {
+  const results = [];
+
+  for (let i = 0; i < pages.length; i += concurrency) {
+    const batch = pages.slice(i, i + concurrency);
+    const batchResults = await Promise.all(
+      batch.map(page => importToConfluence(page))
+    );
+    results.push(...batchResults);
+
+    // Delay between batches
+    if (i + concurrency < pages.length) {
+      await sleep(1000);
+    }
+  }
+
+  return results;
+}
+```
+
+### Content Optimization
+
+- Validate markdown before sending
+- Remove unnecessary whitespace
+- Compress large content where possible
+- Split very large documents into multiple pages
+- Cache processed content when possible
+
+### Rate Limiting
+
+- Implement client-side rate limiting
+- Track API usage and set thresholds
+- Use exponential backoff on rate limit errors
+- Monitor API response times
+
+## Error Handling
+
+### Parse Error Responses
+
+```javascript
+async function safeImport(payload) {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error(`API Error [${response.status}]: ${data.body}`);
+
+      // Handle specific error codes
+      switch (response.status) {
+        case 400:
+          throw new Error('Invalid request format');
+        case 401:
+          throw new Error('Invalid or missing token');
+        case 403:
+          throw new Error('Token expired');
+        case 404:
+          throw new Error('Page or space not found');
+        case 500:
+          throw new Error('Server error');
+        default:
+          throw new Error(data.body);
+      }
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Import failed:', error.message);
+    throw error;
+  }
+}
+```
+
+### Log Request Details
+
+Log important information (without sensitive data):
+
+```javascript
+function logRequest(payload, response) {
+  console.log({
+    timestamp: new Date().toISOString(),
+    pageTitle: payload.pageTitle,
+    spaceId: payload.spaceId,
+    status: response.status,
+    success: response.ok,
+    // Never log the token!
+  });
+}
+```
+
+### Implement Graceful Degradation
+
+- Provide fallback mechanisms
+- Queue failed requests for retry
+- Alert on repeated failures
+- Implement circuit breaker pattern
+
+**Circuit Breaker Example:**
+
+```javascript
+class CircuitBreaker {
+  constructor(threshold = 5, timeout = 60000) {
+    this.failureCount = 0;
+    this.threshold = threshold;
+    this.timeout = timeout;
+    this.state = 'CLOSED'; // CLOSED, OPEN, HALF_OPEN
+    this.nextAttempt = Date.now();
+  }
+
+  async execute(fn) {
+    if (this.state === 'OPEN') {
+      if (Date.now() < this.nextAttempt) {
+        throw new Error('Circuit breaker is OPEN');
+      }
+      this.state = 'HALF_OPEN';
+    }
+
+    try {
+      const result = await fn();
+      this.onSuccess();
+      return result;
+    } catch (error) {
+      this.onFailure();
+      throw error;
+    }
+  }
+
+  onSuccess() {
+    this.failureCount = 0;
+    this.state = 'CLOSED';
+  }
+
+  onFailure() {
+    this.failureCount++;
+    if (this.failureCount >= this.threshold) {
+      this.state = 'OPEN';
+      this.nextAttempt = Date.now() + this.timeout;
+    }
+  }
+}
+```
+
+## Content Management
+
+### Validate Before Import
+
+```javascript
+function validateMarkdown(content) {
+  if (!content || content.trim().length === 0) {
+    throw new Error('Content cannot be empty');
+  }
+
+  if (content.length > 1024 * 1024) { // 1MB
+    throw new Error('Content exceeds maximum size');
+  }
+
+  // Add more validation as needed
+  return true;
+}
+```
+
+### Sanitize Input
+
+```javascript
+function sanitizeInput(payload) {
+  return {
+    ...payload,
+    pageTitle: payload.pageTitle.trim().substring(0, 255),
+    content: payload.content.trim(),
+    spaceId: payload.spaceId.trim().toUpperCase(),
+    parentId: payload.parentId.trim()
+  };
+}
+```
+
+### Version Control
+
+Keep track of page versions:
+
+```javascript
+const importHistory = {
+  pageTitle: 'API Documentation',
+  imports: [
+    { timestamp: '2025-10-07T10:00:00Z', version: 1 },
+    { timestamp: '2025-10-07T11:00:00Z', version: 2 }
+  ]
+};
+```
+
+## Monitoring
+
+### Track Metrics
+
+- Success/failure rates
+- Response times
+- Token usage
+- Error types and frequencies
+- API endpoint availability
+
+### Set Up Alerts
+
+- Alert on repeated failures
+- Monitor token expiration dates
+- Track rate limit warnings
+- Alert on unexpected response codes
+
+### Logging
+
+```javascript
+const logger = {
+  info: (message, data) => {
+    console.log(JSON.stringify({
+      level: 'INFO',
+      timestamp: new Date().toISOString(),
+      message,
+      data
+    }));
+  },
+  error: (message, error) => {
+    console.error(JSON.stringify({
+      level: 'ERROR',
+      timestamp: new Date().toISOString(),
+      message,
+      error: {
+        message: error.message,
+        stack: error.stack
+      }
+    }));
+  }
+};
+```
+
+## Production Checklist
+
+Before deploying to production:
+
+- [ ] Tokens stored in secure secret management system
+- [ ] Environment variables configured correctly
+- [ ] Retry logic implemented with exponential backoff
+- [ ] Rate limiting configured
+- [ ] Error handling comprehensive
+- [ ] Logging and monitoring in place
+- [ ] Token rotation schedule established
+- [ ] Circuit breaker pattern implemented
+- [ ] Content validation added
+- [ ] SSL/TLS verification enabled
+- [ ] Separate tokens for staging and production
+- [ ] Alert system configured
+- [ ] Documentation reviewed and updated
+
+## Related Documentation
+
+- [Authentication](/docs/markdown-importer-for-confluence/rest-api/authentication) - Security features
+- [Examples](/docs/markdown-importer-for-confluence/rest-api/examples) - Code samples
+- [Troubleshooting](/docs/markdown-importer-for-confluence/rest-api/troubleshooting) - Common issues

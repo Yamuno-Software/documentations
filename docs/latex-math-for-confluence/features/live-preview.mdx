@@ -1,0 +1,405 @@
+---
+title: Live Preview
+order: 4
+---
+
+# Live Preview
+
+Experience real-time LaTeX equation rendering with the built-in live preview feature.
+
+## What is Live Preview?
+
+**Live Preview** provides instant visual feedback as you write LaTeX equations. See your mathematical expressions render in real-time without having to save or publish your changes.
+
+![Live Preview Feature](https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/latex/latex/highlights/1.jpg)
+
+## Key Features
+
+- ⚡ **Real-time Rendering** - See changes instantly as you type
+- 🎨 **Split-Pane Editor** - Code on left, preview on right
+- 🔄 **Auto-Update** - Preview updates automatically
+- 🎯 **Syntax Validation** - Immediate error feedback
+- 📱 **Responsive Design** - Works on all screen sizes
+
+---
+
+## How Live Preview Works
+
+### Editor Layout
+
+```
+┌─────────────────────────┬─────────────────────────┐
+│    LaTeX Editor         │    Live Preview         │
+│                         │                         │
+│  \[                     │                         │
+│    E = mc^2             │       E = mc²           │
+│  \]                     │                         │
+│                         │                         │
+└─────────────────────────┴─────────────────────────┘
+```
+
+### The Split-Pane Interface
+
+**Left Pane: LaTeX Editor**
+- Syntax-highlighted code editor
+- Write and edit LaTeX code
+- Auto-completion for common commands
+- Line numbers for easy navigation
+
+**Right Pane: Preview**
+- Real-time rendered output
+- Shows exactly how your equation will appear
+- Alignment controls (left/center/right)
+- Instant error messages
+
+---
+
+## Using Live Preview
+
+### Opening the Editor
+
+1. Insert a LaTeX macro on your page
+2. The editor opens automatically with live preview
+3. Start typing your LaTeX code
+4. Watch the preview update in real-time
+
+### Writing Equations
+
+As you type:
+```latex
+\int
+```
+Preview shows: ∫
+
+Continue typing:
+```latex
+\int_{-\infty}^{\infty}
+```
+Preview updates: ∫₋∞^∞
+
+Complete the equation:
+```latex
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+```
+Preview shows the full rendered equation.
+
+### Editing Existing Equations
+
+1. Click on any LaTeX macro
+2. The editor opens with your existing code
+3. Make changes in the left pane
+4. Preview updates automatically
+5. Click **Save** when satisfied
+
+---
+
+## Preview Features
+
+### Alignment Preview
+
+Test different alignments in real-time:
+
+**Left Align**
+- Click the left align button
+- Preview updates immediately
+- Equation aligns to left margin
+
+**Center Align** (Default)
+- Click the center align button
+- Preview centers the equation
+- Most common for display equations
+
+**Right Align**
+- Click the right align button
+- Preview aligns to right margin
+- Useful for specific formatting needs
+
+### Error Detection
+
+The preview helps catch errors immediately:
+
+**Syntax Error:**
+```latex
+\frac{1}{2
+```
+Preview shows: ❌ Error: Missing closing brace
+
+**Unknown Command:**
+```latex
+\unknowncommand
+```
+Preview shows: ❌ Error: Undefined control sequence
+
+**Fixed Code:**
+```latex
+\frac{1}{2}
+```
+Preview shows: ½ ✅
+
+---
+
+## Resizable Panes
+
+### Adjusting Pane Width
+
+1. **Hover** over the divider between panes
+2. **Drag** left or right to resize
+3. **Release** when satisfied
+
+**Presets:**
+- 50/50 split (default)
+- 60/40 (more code space)
+- 40/60 (more preview space)
+
+> **💡 Tip:** Give more space to the pane you're focusing on.
+
+---
+
+## Editor Shortcuts
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl/Cmd + S` | Save equation |
+| `Ctrl/Cmd + Enter` | Save and close |
+| `Esc` | Close without saving |
+| `Ctrl/Cmd + Z` | Undo |
+| `Ctrl/Cmd + Y` | Redo |
+
+### Editor Features
+
+**Auto-Indentation**
+- Automatic code formatting
+- Proper nesting for environments
+
+**Syntax Highlighting**
+- Commands highlighted in color
+- Easier to spot errors
+
+**Bracket Matching**
+- Matching braces highlighted
+- Helps balance parentheses
+
+---
+
+## Formula Library Integration
+
+### Quick Insert
+
+While editing, access the formula library:
+
+1. Click **"Formula Library"** button (📚)
+2. Browse common equations
+3. Click any formula to insert
+4. Preview updates with new content
+
+### Categories
+
+- Greek Letters
+- Common Formulas
+- Calculus
+- Linear Algebra
+- Statistics
+- Physics
+- Chemistry
+
+---
+
+## Best Practices
+
+### ✅ Do's
+
+1. **Use the preview** - Verify rendering before saving
+2. **Test alignment** - Try different alignments
+3. **Check for errors** - Watch for error messages
+4. **Adjust pane sizes** - Optimize for your workflow
+5. **Save frequently** - Don't lose your work
+
+### ❌ Don'ts
+
+1. **Don't ignore errors** - Fix syntax issues before saving
+2. **Don't rush** - Take time to verify output
+3. **Don't close without saving** - You'll lose changes
+4. **Don't overcomplicate** - Keep LaTeX simple when possible
+
+---
+
+## Preview Limitations
+
+### What Preview Shows
+
+✅ Final rendered appearance
+✅ Alignment
+✅ Font size relative to page
+✅ Dark/light mode
+✅ Error messages
+
+### What Preview Doesn't Show
+
+❌ Exact page context
+❌ Surrounding Confluence content
+❌ How it looks in different browsers
+❌ Mobile view (use responsive preview)
+
+> **Note:** Always preview the full page after saving to see the equation in context.
+
+---
+
+## Troubleshooting
+
+### Preview Not Updating
+
+**Problem:** Changes don't appear in preview
+
+**Solutions:**
+1. Wait a moment - there's a small delay
+2. Check for syntax errors
+3. Try typing in a different part of the code
+4. Refresh the editor (close and reopen)
+
+### Preview Shows Error
+
+**Problem:** Red error message in preview
+
+**Solutions:**
+1. Read the error message carefully
+2. Check for:
+   - Missing closing braces `}`
+   - Unbalanced delimiters
+   - Typos in command names
+   - Unsupported commands
+3. Fix the error and preview updates
+
+### Panes Won't Resize
+
+**Problem:** Can't drag the divider
+
+**Solutions:**
+1. Ensure you're hovering over the divider
+2. Try clicking and dragging again
+3. Refresh the page
+4. Use a different browser
+
+### Preview is Blank
+
+**Problem:** Right pane shows nothing
+
+**Solutions:**
+1. Check if you've entered any LaTeX code
+2. Verify code has valid delimiters
+3. Look for syntax errors
+4. Try entering a simple equation: `E = mc^2`
+
+---
+
+## Performance Tips
+
+### For Smooth Preview
+
+- ✅ Keep equations reasonably sized
+- ✅ Avoid extremely complex nested structures
+- ✅ Use proper LaTeX syntax
+- ⚠️ Very large matrices may render slowly
+- ⚠️ Excessive nesting impacts performance
+
+### Editor Performance
+
+The live preview is optimized for:
+- Up to 500 lines of LaTeX code
+- Equations with up to 50 elements
+- Matrices up to 10×10
+
+For larger content:
+- Preview may have slight delay
+- Consider breaking into multiple macros
+- Simplify where possible
+
+---
+
+## Mobile Experience
+
+### Tablet View
+
+- Split-pane layout maintained
+- Panes stack vertically in portrait mode
+- Horizontal scroll for wide equations
+- Touch-friendly controls
+
+### Phone View
+
+- Editor and preview in tabs
+- Swipe to switch between views
+- Full-width editing
+- Save button always visible
+
+---
+
+## Advanced Tips
+
+### 1. Quick Testing
+
+Use the preview to test LaTeX commands:
+```latex
+\alpha \beta \gamma
+```
+See Greek letters instantly.
+
+### 2. Learning LaTeX
+
+The preview is a great learning tool:
+- Type commands
+- See results immediately
+- Learn by experimenting
+
+### 3. Debugging
+
+Use preview to isolate errors:
+- Comment out sections
+- Find the problematic line
+- Fix and verify
+
+### 4. Comparing Approaches
+
+Test different LaTeX approaches:
+```latex
+% Approach 1
+\frac{a}{b}
+
+% Approach 2
+a/b
+```
+Choose what looks best.
+
+---
+
+## Accessibility
+
+### Screen Reader Support
+
+- Editor announces changes
+- Error messages are read aloud
+- Keyboard navigation supported
+
+### High Contrast Mode
+
+- Preview respects system settings
+- Adequate contrast maintained
+- Clear visual separation
+
+---
+
+## Related Documentation
+
+- 📖 [Inline Macro](/docs/latex-math-for-confluence/features/inline-macro) - Inline equations
+- 📖 [Block Macro](/docs/latex-math-for-confluence/features/block-macro) - Display equations
+- 📖 [Dark Mode](/docs/latex-math-for-confluence/features/dark-mode) - Theme support
+- ❓ [FAQ](/docs/latex-math-for-confluence/faq)
+
+---
+
+## Need Help?
+
+- 💬 [Contact Support](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📚 [View All Documentation](/docs/latex-math-for-confluence/INDEX)
+- 🎥 [Video Tutorial](https://yamuno.com/tutorials) (Coming Soon)

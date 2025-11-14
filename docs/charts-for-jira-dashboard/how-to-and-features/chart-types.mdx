@@ -1,0 +1,301 @@
+---
+title: Chart Types Guide
+description: Detailed guide for each chart type available in Charts for Jira Dashboard
+---
+
+# Chart Types Guide
+
+Choose the right visualization for your data story. This guide covers all available chart types and when to use each one.
+
+## Bar Chart
+
+### Overview
+
+Bar charts display data using rectangular bars with lengths proportional to the values they represent.
+
+### Best For
+
+- Comparing quantities across categories
+- Showing distribution of issues by status, assignee, or type
+- Displaying project metrics side-by-side
+
+### Configuration Options
+
+- **Orientation**: Horizontal or vertical bars
+- **Stacking**: Normal, stacked, or percentage stacked
+- **Sorting**: By value, alphabetical, or custom order
+- **Colors**: Individual bar colors or gradient schemes
+
+### Example Use Cases
+
+1. **Issue Status Distribution**
+   - Group by: Status
+   - Shows: Number of issues in each status
+
+2. **Team Workload**
+   - Group by: Assignee
+   - Shows: Issue count per team member
+
+3. **Project Comparison**
+   - Group by: Project
+   - Shows: Metrics across multiple projects
+
+## Line Chart
+
+### Overview
+
+Line charts display data points connected by straight line segments, ideal for showing trends over time.
+
+### Best For
+
+- Tracking changes over time periods
+- Showing velocity trends
+- Monitoring bug discovery/resolution rates
+- Displaying cumulative flow
+
+### Configuration Options
+
+- **Line Style**: Solid, dashed, or dotted
+- **Point Markers**: Show/hide data points
+- **Smoothing**: Apply curve smoothing
+- **Multiple Lines**: Compare multiple data series
+- **Trend Lines**: Add linear or polynomial trend lines
+
+### Example Use Cases
+
+1. **Sprint Velocity**
+   - X-axis: Sprint
+   - Y-axis: Story points completed
+
+2. **Bug Trend Analysis**
+   - X-axis: Time period
+   - Y-axis: Number of bugs
+
+3. **Cumulative Flow**
+   - X-axis: Date
+   - Y-axis: Cumulative issue count
+
+## Pie Chart
+
+### Overview
+
+Pie charts show data as slices of a circular graph, with each slice representing a proportion of the whole.
+
+### Best For
+
+- Showing proportions and percentages
+- Displaying distribution of a total
+- Comparing parts to the whole
+- Maximum 5-7 categories for clarity
+
+### Configuration Options
+
+- **Slice Labels**: Show values, percentages, or both
+- **Legend Position**: Top, bottom, left, or right
+- **Donut Style**: Convert to donut chart
+- **Exploded Slices**: Emphasize specific segments
+- **Color Schemes**: Categorical or sequential
+
+### Example Use Cases
+
+1. **Issue Type Distribution**
+   - Shows: Percentage of bugs vs. features vs. tasks
+
+2. **Priority Breakdown**
+   - Shows: Distribution of issues by priority level
+
+3. **Time Allocation**
+   - Shows: Percentage of time spent on different activities
+
+## Area Chart
+
+### Overview
+
+Area charts are similar to line charts but with the area below the line filled with color or pattern.
+
+### Best For
+
+- Showing cumulative totals over time
+- Displaying volume changes
+- Comparing multiple data series
+- Emphasizing magnitude of change
+
+### Configuration Options
+
+- **Stacking**: Normal, stacked, or stream graph
+- **Transparency**: Adjust fill opacity
+- **Gradient Fills**: Apply color gradients
+- **Baseline**: Start from zero or custom value
+
+### Example Use Cases
+
+1. **Cumulative Story Points**
+   - X-axis: Sprint timeline
+   - Y-axis: Cumulative points
+
+2. **Resource Utilization**
+   - X-axis: Time period
+   - Y-axis: Hours allocated
+
+3. **Multi-Project Progress**
+   - Stacked areas for each project
+
+## Scatter Chart
+
+### Overview
+
+Scatter charts display values for two variables as points on a coordinate system.
+
+### Best For
+
+- Finding correlations between variables
+- Identifying patterns and outliers
+- Analyzing relationships
+- Risk assessment matrices
+
+### Configuration Options
+
+- **Point Size**: Fixed or variable based on third dimension
+- **Point Shape**: Circles, squares, triangles, etc.
+- **Trend Lines**: Linear, polynomial, or logarithmic
+- **Quadrants**: Divide chart into regions
+- **Bubble Mode**: Add third dimension via bubble size
+
+### Example Use Cases
+
+1. **Effort vs. Value Analysis**
+   - X-axis: Estimated effort
+   - Y-axis: Business value
+
+2. **Bug Complexity**
+   - X-axis: Time to fix
+   - Y-axis: Severity level
+
+3. **Team Performance**
+   - X-axis: Issues completed
+   - Y-axis: Average resolution time
+
+## Table View
+
+### Overview
+
+Tables display data in rows and columns, providing detailed information in a structured format.
+
+### Best For
+
+- Showing detailed data
+- Providing sortable/filterable views
+- Displaying multiple attributes
+- Exporting data for analysis
+
+### Configuration Options
+
+- **Column Selection**: Choose which fields to display
+- **Sorting**: Multi-column sorting capability
+- **Filtering**: Column-level filters
+- **Pagination**: Control rows per page
+- **Formatting**: Conditional formatting rules
+- **Totals**: Show sum/average rows
+
+### Example Use Cases
+
+1. **Issue Details List**
+   - Columns: Key, Summary, Status, Assignee, Priority
+
+2. **Sprint Report**
+   - Columns: Issue, Points, Status, Days remaining
+
+3. **Team Metrics**
+   - Columns: Member, Issues, Points, Avg. resolution
+
+## Combination Charts
+
+### Overview
+
+Combine multiple chart types to show different data series with appropriate visualizations.
+
+### Available Combinations
+
+- **Line + Bar**: Trends with volume
+- **Area + Line**: Cumulative with current
+- **Stacked Bar + Line**: Distribution with trend
+
+### Configuration Options
+
+- **Dual Axes**: Different scales for each series
+- **Series Assignment**: Choose chart type per data series
+- **Synchronization**: Link interactions between series
+
+### Example Use Cases
+
+1. **Burndown with Scope Changes**
+   - Bars: Scope changes
+   - Line: Remaining work
+
+2. **Velocity with Team Size**
+   - Bars: Story points
+   - Line: Team members
+
+## Choosing the Right Chart
+
+### Decision Matrix
+
+| Data Type     | Best Chart Types | Avoid   |
+| ------------- | ---------------- | ------- |
+| Time Series   | Line, Area       | Pie     |
+| Proportions   | Pie, Donut       | Line    |
+| Comparisons   | Bar, Column      | Area    |
+| Relationships | Scatter          | Pie     |
+| Distribution  | Bar, Histogram   | Line    |
+| Part-to-Whole | Pie, Stacked Bar | Scatter |
+
+### Quick Selection Guide
+
+**"I want to show..."**
+
+- **Changes over time** → Line or Area Chart
+- **Comparison between items** → Bar Chart
+- **Proportions of a whole** → Pie Chart
+- **Relationships between variables** → Scatter Chart
+- **Detailed data** → Table View
+- **Multiple metrics** → Combination Chart
+
+## Performance Considerations
+
+### Data Points
+
+- **Bar**: Optimal for 5-20 categories
+- **Line**: Best with 20-100 data points
+- **Pie**: Maximum 7 slices for clarity
+- **Scatter**: Can handle 100-500 points
+- **Table**: Paginate for >50 rows
+
+### Refresh Rates
+
+- Real-time: Line, Bar
+- Periodic: All types
+- On-demand: Table, Scatter
+
+## Accessibility Features
+
+All chart types include:
+
+- Keyboard navigation
+- Screen reader support
+- High contrast modes
+- Color-blind friendly palettes
+- Text alternatives
+
+## Export Options
+
+| Chart Type | PNG | JPG | SVG | CSV | PDF |
+| ---------- | --- | --- | --- | --- | --- |
+| Bar        | ✅  | ✅  | ✅  | ✅  | ✅  |
+| Line       | ✅  | ✅  | ✅  | ✅  | ✅  |
+| Pie        | ✅  | ✅  | ✅  | ✅  | ✅  |
+| Area       | ✅  | ✅  | ✅  | ✅  | ✅  |
+| Scatter    | ✅  | ✅  | ✅  | ✅  | ✅  |
+| Table      | ✅  | ✅  | ❌  | ✅  | ✅  |
+
+Need help choosing? Contact our [support team](https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51) for guidance.
+

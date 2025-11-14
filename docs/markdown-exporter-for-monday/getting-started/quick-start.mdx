@@ -1,0 +1,145 @@
+---
+title: Quick Start Guide
+description: Get up and running with Markdown Exporter in minutes
+order: 2
+---
+
+# Quick Start Guide
+
+![Markdown Exporter for Monday.com](https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/Markdown%20Exporter.jpg)
+
+This guide will help you get started with Markdown Exporter for Monday.com in just a few minutes.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+1. A Monday.com workspace with documentation
+2. Necessary permissions to access docs
+3. The Markdown Exporter app installed in your workspace
+
+## Installation Steps
+
+1. **Install the App**
+
+   - Visit the Monday.com Marketplace
+   - Search for "Markdown Exporter"
+   - Click "Install"
+   - Authorize the app for your workspace
+
+2. **Verify Installation**
+   - Open your Monday.com workspace
+   - Look for "Markdown Exporter" in your apps menu
+   - If visible, installation is successful
+
+## Your First Export
+
+Follow these simple steps to export your Monday.com documentation to markdown:
+
+### Step 1: Open the App
+
+1. **Access from Workspace Apps**
+   - Open your Monday.com workspace
+   - Navigate to the workspace apps section
+   - Click on "Markdown Exporter" to launch the app
+
+### Step 2: Select Workspace and Source
+
+1. **Choose Your Workspace**
+   - Select the workspace containing the docs you want to export
+   - The app will load all available folders and documents
+
+2. **Select Export Source**
+   - Choose **Specific Folder** to export docs from a particular folder
+   - Or select **All Folders** to export the entire workspace documentation
+   - Review the list of documents that will be processed
+
+### Step 3: Download Your Export
+
+1. **Download Options**
+
+   You have two ways to download your markdown files:
+
+   - **Download Specific Document**: Select individual documents from the list and download them one at a time
+   - **Download Processed File**: Download all processed documents as a single ZIP file with organized folder structure
+
+2. **Wait for Processing**
+   - The app will convert your Monday.com docs to markdown format
+   - Attachments will be downloaded and referenced locally
+   - Processing time depends on the number of documents and attachments
+
+3. **Get Your Files**
+   - Click the download button when processing is complete
+   - Extract the ZIP file (if downloading all)
+   - Your markdown files are ready to use
+
+## Understanding Export Results
+
+### File Structure
+
+When you export, you'll receive:
+
+```
+export-folder/
+├── doc-1.md
+├── doc-2.md
+├── subfolder/
+│   ├── doc-3.md
+│   └── doc-4.md
+└── attachments/
+    ├── image1.png
+    ├── file1.pdf
+    └── media1.mp4
+```
+
+### Attachment References
+
+Images and media are referenced using relative paths:
+
+```markdown
+![Image description](./attachments/image1.png)
+
+[Download PDF](./attachments/file1.pdf)
+```
+
+### Internal Links
+
+Internal doc links are converted to markdown links:
+
+```markdown
+See [related documentation](./subfolder/doc-3.md) for more details.
+```
+
+## Common Export Scenarios
+
+### Backup Your Documentation
+
+- Use **All Folders** export for complete backups
+- Schedule regular exports for documentation history
+- Store exports in version control
+
+### Create Local Documentation
+
+- Export relevant folders
+- Host as static site (e.g., with MkDocs)
+- Share with team or customers
+
+### Archive Old Projects
+
+- Export project documentation
+- Include all attachments
+- Store compressed archive
+
+## Next Steps
+
+- Read the [Features Guide](/docs/markdown-exporter-for-monday/how-to-and-features)
+- Check [Known Issues](/docs/markdown-exporter-for-monday/known-issues)
+- Review [Release Notes](/docs/markdown-exporter-for-monday/release-notes)
+
+## Tips for Best Results
+
+1. **Organize Before Export**: Clean up your Monday.com docs structure before exporting
+2. **Check Permissions**: Ensure you have access to all docs you want to export
+3. **Test Small First**: Try exporting a single doc before doing workspace-wide exports
+4. **Verify Attachments**: Check that all attachments are accessible in Monday.com
+5. **Review Output**: Always verify the exported markdown renders correctly

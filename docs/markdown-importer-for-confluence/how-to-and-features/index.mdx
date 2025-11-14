@@ -1,0 +1,125 @@
+---
+title: Features & How To
+description: Learn about all the import and export features and how to use them effectively
+order: 2
+---
+
+# How To Use & Features
+
+Markdown Exporter & Importer for Confluence comes with a rich set of features for both importing markdown to Confluence and exporting Confluence pages to markdown.
+
+![Folder hierarchy](https://marketplace.atlassian.com/product-listing/files/06a1e19e-8602-4cd3-9c0b-5fc2bbc9538b?width=1840&height=900)
+
+## Overview
+
+This app provides two-way conversion between markdown and Confluence:
+
+- **[Importing Markdown](/docs/markdown-importer-for-confluence/how-to-and-features/importing-markdown)**: Convert markdown files to Confluence pages
+- **[Export Features](/docs/markdown-importer-for-confluence/how-to-and-features/export-pages)**: Convert Confluence pages to markdown files
+
+---
+
+## Importing Features
+
+Import markdown files to Confluence — single files, multiple files, or ZIP archives without a fixed limit:
+
+1. Navigate to any Confluence page (page-level) or open from the global Apps menu (global access)
+2. Select "Markdown Importer & Exporter"
+3. Choose single file, multiple files, or upload a `.zip` archive containing markdown, folders, and assets
+4. Configure options as needed
+5. Click "Import"
+
+The files will be imported in the order they were selected. Large batches may take longer depending on Confluence API limits.
+
+For detailed import instructions, see the [Importing Markdown to Confluence](/docs/markdown-importer-for-confluence/how-to-and-features/importing-markdown) guide.
+
+### ZIP Upload
+
+- Upload a single `.zip` containing your markdown files
+- Folder structure is preserved as a Confluence page hierarchy
+- Local images and other attachments are uploaded automatically
+
+## Preview Support
+
+Preview your markdown files before importing:
+
+![Preview markdown](https://marketplace.atlassian.com/product-listing/files/a8374c9b-e5da-4fe4-85a5-0ab71f285231?fileType=image&mode=full-fit)
+
+1. Select your markdown file(s)
+2. Click "Preview" instead of "Import"
+3. Review how the content will look in Confluence
+4. Make any necessary adjustments
+5. Click "Import" when ready
+
+## Media Handling
+
+### Images
+
+- Local images are uploaded as Confluence attachments
+- Remote images can be fetched and stored in Confluence
+- Image references are updated automatically
+
+### Attachments
+
+- Files referenced in markdown are uploaded as attachments
+- Links to attachments are updated to point to Confluence
+
+## File Hierarchy
+
+- Preserve your folder structure during import
+- Each folder becomes a parent page with child pages mirroring subfolders
+- Works with both multi-file selection and ZIP uploads
+
+## Access Levels
+
+- Page-level access: open from a page’s ••• menu to import under that page
+- Global access: open from the global Apps menu and target any space
+- Admins can run imports across all spaces from global access
+
+## Code Blocks
+
+Code blocks are supported with syntax highlighting:
+
+```javascript
+function hello() {
+  console.log("Hello, world!");
+}
+```
+
+## Tables
+
+Markdown tables are converted to Confluence tables:
+
+```
+| Feature | Description                         |
+| ------- | ----------------------------------- |
+| Tables  | Full table support with alignment   |
+| Code    | Syntax highlighting for code blocks |
+| Images  | Automatic image upload and linking  |
+```
+
+## Task Lists
+
+Convert markdown task lists to Confluence checkboxes:
+
+- [x] Completed task
+- [ ] Pending task
+- [ ] Another task
+
+## Best Practices
+
+1. **Backup First**: Always backup your Confluence pages before importing
+2. **Test Small**: Test with a small set of files first
+3. **Check Links**: Verify internal links after import
+4. **Review Media**: Ensure all images and attachments are properly imported
+5. **Update References**: Update any external references to the new pages
+
+## Troubleshooting
+
+If you encounter any issues:
+
+1. Check the [Known Issues](/docs/markdown-importer-for-confluence/known-issues) page
+2. Verify your markdown syntax
+3. Ensure all referenced files are accessible
+4. Check your Confluence permissions
+5. Contact [support](https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51) if needed

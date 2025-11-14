@@ -1,0 +1,652 @@
+---
+title: Troubleshooting
+order: 6
+---
+
+# Troubleshooting Guide
+
+Common issues and solutions for LaTeX Math for Confluence.
+
+## Quick Fixes
+
+Try these first:
+1. **Refresh the page** (Ctrl/Cmd + R)
+2. **Hard refresh** (Ctrl/Cmd + Shift + R)
+3. **Clear browser cache**
+4. **Try incognito/private mode**
+5. **Try a different browser**
+
+---
+
+## Rendering Issues
+
+### Equation Not Displaying
+
+**Symptoms:**
+- Equation shows as blank space
+- No visible output
+- Placeholder appears instead
+
+**Solutions:**
+
+1. **Check for syntax errors**
+   ```latex
+   ❌ \frac{1}{2  (missing closing brace)
+   ✅ \frac{1}{2}
+   ```
+
+2. **Verify delimiters**
+   ```latex
+   ❌ $E = mc^2  (missing closing $)
+   ✅ $E = mc^2$
+   ```
+
+3. **Test simple equation**
+   ```latex
+   E = mc^2
+   ```
+   If this works, your original equation has an error
+
+4. **Check live preview**
+   - Open editor
+   - Look for error messages
+   - Fix indicated issues
+
+---
+
+### Equation Shows as Raw LaTeX
+
+**Symptoms:**
+- See `\frac{1}{2}` instead of ½
+- LaTeX code visible on page
+- No rendering occurred
+
+**Solutions:**
+
+1. **Verify app is installed**
+   - Go to Manage Apps
+   - Find LaTeX Math for Confluence
+   - Ensure it's enabled
+
+2. **Check macro type**
+   - Correct macro selected?
+   - Not a different LaTeX app?
+
+3. **Refresh the page**
+   - Hard refresh (Ctrl/Cmd + Shift + R)
+
+4. **Reinstall macro**
+   - Delete and recreate
+   - Re-enter LaTeX code
+   - Save again
+
+---
+
+### Wrong Rendering
+
+**Symptoms:**
+- Equation renders but looks wrong
+- Unexpected output
+- Different from preview
+
+**Solutions:**
+
+1. **Check syntax carefully**
+   ```latex
+   ❌ \frac12     (missing braces)
+   ✅ \frac{1}{2}
+   ```
+
+2. **Verify command spelling**
+   ```latex
+   ❌ \aplha  (typo)
+   ✅ \alpha
+   ```
+
+3. **Test in live preview**
+   - Edit the macro
+   - Verify preview looks correct
+   - If preview is correct, clear page cache
+
+---
+
+## Editor Issues
+
+### Editor Won't Open
+
+**Symptoms:**
+- Click edit, nothing happens
+- Editor window doesn't appear
+- Page freezes
+
+**Solutions:**
+
+1. **Check browser console**
+   - Press F12
+   - Look for JavaScript errors
+   - Share with support if found
+
+2. **Disable browser extensions**
+   - Try incognito mode
+   - Disable ad blockers
+   - Test without extensions
+
+3. **Update browser**
+   - Ensure you're on latest version
+   - Try different browser
+
+4. **Check Confluence status**
+   - Visit [Atlassian Status](https://status.atlassian.com/)
+   - Verify no outages
+
+---
+
+### Preview Not Updating
+
+**Symptoms:**
+- Type in editor
+- Preview doesn't change
+- Stuck on old content
+
+**Solutions:**
+
+1. **Wait a moment**
+   - Small delay is normal
+   - Updates within 1-2 seconds
+
+2. **Check for syntax errors**
+   - Error prevents preview update
+   - Fix error first
+
+3. **Close and reopen editor**
+   - Save current work
+   - Close editor
+   - Open again
+
+4. **Refresh page**
+   - Hard refresh
+   - Open editor again
+
+---
+
+### Can't Save Changes
+
+**Symptoms:**
+- Click save, nothing happens
+- Error message appears
+- Changes don't persist
+
+**Solutions:**
+
+1. **Check permissions**
+   - Are you in the whitelist?
+   - Do you have page edit rights?
+   - See "Access Denied" message?
+
+2. **Try save again**
+   - Might be temporary network issue
+   - Wait and retry
+
+3. **Check syntax**
+   - Fix all errors first
+   - Preview should be error-free
+
+4. **Copy LaTeX code**
+   - Save code externally
+   - Refresh page
+   - Try creating new macro
+
+---
+
+## Permission Issues
+
+### "Access Denied" Message
+
+**Symptoms:**
+- Can't open editor
+- See access denied warning
+- Permission error
+
+**Solutions:**
+
+1. **Check whitelist**
+   - Ask admin if you're whitelisted
+   - Verify restricted mode is enabled
+   - Request access if needed
+
+2. **Verify Confluence permissions**
+   - Do you have page edit rights?
+   - Check space permissions
+   - Confirm you're logged in
+
+3. **Clear session**
+   - Log out
+   - Clear cookies
+   - Log back in
+
+See [Access Control Guide](/docs/latex-math-for-confluence/features/configuration/access-control) for more details.
+
+---
+
+### Admin Can't Configure
+
+**Symptoms:**
+- Can't access settings
+- Configuration page won't load
+- No configure button
+
+**Solutions:**
+
+1. **Verify admin status**
+   - Are you Confluence admin?
+   - Check in Confluence settings
+   - May need to be system admin
+
+2. **Clear cache**
+   - Clear browser cache
+   - Try incognito mode
+
+3. **Check app status**
+   - Is app enabled?
+   - Go to Manage Apps
+   - Verify installation
+
+4. **Reinstall if needed**
+   - Uninstall app
+   - Reinstall from Marketplace
+   - Reconfigure
+
+---
+
+## Performance Issues
+
+### Slow Loading
+
+**Symptoms:**
+- Page takes long to load
+- Equations render slowly
+- Lagging editor
+
+**Solutions:**
+
+1. **Reduce equation count**
+   - Limit to 20-30 per page
+   - Split into multiple pages
+   - Simplify complex equations
+
+2. **Optimize equations**
+   - Remove unnecessary LaTeX
+   - Simplify nested structures
+   - Avoid very large matrices
+
+3. **Check browser**
+   - Close other tabs
+   - Disable heavy extensions
+   - Update browser
+
+4. **Check network**
+   - Test internet speed
+   - Use wired connection
+   - Contact IT if slow
+
+---
+
+### Editor Lag
+
+**Symptoms:**
+- Typing delay
+- Preview slow to update
+- Choppy interaction
+
+**Solutions:**
+
+1. **Simplify equation**
+   - Break into smaller parts
+   - Reduce complexity
+   - Test incrementally
+
+2. **Close other apps**
+   - Free up system resources
+   - Close unnecessary tabs
+   - Restart browser
+
+3. **Check system resources**
+   - CPU usage
+   - Memory available
+   - Close heavy applications
+
+---
+
+## Mobile Issues
+
+### Equations Not Showing on Mobile
+
+**Symptoms:**
+- Blank spaces on mobile
+- Works on desktop
+- Mobile-specific issue
+
+**Solutions:**
+
+1. **Refresh mobile page**
+   - Pull down to refresh
+   - Clear mobile browser cache
+
+2. **Try different mobile browser**
+   - Safari on iOS
+   - Chrome on Android
+   - In-app browser
+
+3. **Check mobile data**
+   - Ensure good connection
+   - Try WiFi
+   - Test cellular data
+
+---
+
+### Editor Hard to Use on Phone
+
+**Symptoms:**
+- Buttons too small
+- Hard to type
+- Poor layout
+
+**Solutions:**
+
+1. **Use landscape mode**
+   - Rotate device
+   - More screen space
+
+2. **Zoom interface**
+   - Pinch to zoom
+   - Increase text size in settings
+
+3. **Use tablet instead**
+   - Better for editing
+   - Larger screen
+   - Desktop browser mode
+
+4. **Edit on desktop**
+   - View on mobile
+   - Edit on computer
+   - Sync automatically
+
+---
+
+## Dark Mode Issues
+
+### Equations Wrong Color
+
+**Symptoms:**
+- Can't read equations in dark mode
+- Colors don't match theme
+- Poor contrast
+
+**Solutions:**
+
+1. **Hard refresh page**
+   - Ctrl/Cmd + Shift + R
+   - Forces theme reload
+
+2. **Toggle theme**
+   - Switch to light
+   - Switch back to dark
+   - Refreshes colors
+
+3. **Check browser**
+   - Does browser support dark mode?
+   - Try different browser
+
+4. **Report if persistent**
+   - Contact support
+   - Provide screenshots
+   - Mention browser/OS
+
+See [Dark Mode Guide](/docs/latex-math-for-confluence/features/features/dark-mode) for more details.
+
+---
+
+## Installation Issues
+
+### App Not Installing
+
+**Symptoms:**
+- Installation fails
+- Error message
+- Never completes
+
+**Solutions:**
+
+1. **Verify permissions**
+   - Must be Confluence admin
+   - Check user role
+
+2. **Check Marketplace**
+   - Is app available for your region?
+   - Correct Confluence version?
+
+3. **Wait and retry**
+   - May be temporary issue
+   - Try in 10-15 minutes
+
+4. **Contact Atlassian support**
+   - For installation issues
+   - They manage Marketplace
+
+---
+
+### App Not in Manage Apps
+
+**Symptoms:**
+- Installed but don't see it
+- Can't find in list
+- Missing from menu
+
+**Solutions:**
+
+1. **Wait for sync**
+   - Takes 5-10 minutes
+   - Refresh page periodically
+
+2. **Search by name**
+   - Use search in Manage Apps
+   - Type "latex"
+
+3. **Check all apps**
+   - Scroll through entire list
+   - May be in different section
+
+4. **Verify installation**
+   - Check Marketplace
+   - Confirm installation completed
+
+---
+
+## Data/Content Issues
+
+### Lost LaTeX Code
+
+**Symptoms:**
+- Code disappeared
+- Equation blank
+- No content in editor
+
+**Solutions:**
+
+1. **Check page history**
+   - View previous versions
+   - Find when code existed
+   - Restore from history
+
+2. **Check backups**
+   - Confluence backup
+   - Export if you made one
+
+3. **Contact support**
+   - May be recoverable
+   - Provide page URL and timeline
+
+---
+
+### Equations Disappeared After Update
+
+**Symptoms:**
+- After app update, equations gone
+- Only happened after update
+- Multiple pages affected
+
+**Solutions:**
+
+1. **Hard refresh all pages**
+   - Ctrl/Cmd + Shift + R
+   - Clear cache
+   - Reload pages
+
+2. **Check app status**
+   - Ensure app still enabled
+   - Verify update completed
+
+3. **Contact support immediately**
+   - Provide update version
+   - List affected pages
+   - Include screenshots
+
+---
+
+## Browser-Specific Issues
+
+### Chrome Issues
+
+**Common problems:**
+- Extension conflicts
+- Cache issues
+
+**Solutions:**
+- Disable extensions
+- Clear cache
+- Try incognito
+
+---
+
+### Firefox Issues
+
+**Common problems:**
+- Tracking protection
+- Strict security
+
+**Solutions:**
+- Disable tracking protection
+- Check security settings
+- Clear cookies
+
+---
+
+### Safari Issues
+
+**Common problems:**
+- Cross-site tracking
+- ITP restrictions
+
+**Solutions:**
+- Disable tracking prevention
+- Clear website data
+- Update Safari
+
+---
+
+## Getting More Help
+
+### Before Contacting Support
+
+Gather this information:
+- **Browser:** Version and type
+- **OS:** Windows/Mac/Linux/Mobile
+- **Error messages:** Exact text
+- **Screenshots:** Of the problem
+- **Steps to reproduce:** What you did
+- **Page URL:** Where issue occurs
+
+### Contact Support
+
+- 💬 [Support Portal](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📧 Email through portal
+- 🐛 Include error details
+
+### Atlassian Support
+
+For installation/billing/account issues:
+- [Atlassian Support](https://support.atlassian.com/)
+
+---
+
+## Emergency Procedures
+
+### Critical Page Not Working
+
+1. **Don't panic**
+2. **Don't delete anything**
+3. **Contact support immediately**
+4. **Provide page URL**
+5. **Describe criticality**
+
+### Data Loss Concern
+
+1. **Stop making changes**
+2. **Check page history**
+3. **Contact support ASAP**
+4. **Provide timeline**
+
+### App Breaking Site
+
+1. **Disable app** in Manage Apps
+2. **Contact support**
+3. **Don't uninstall** (may lose data)
+4. **Document issue**
+
+---
+
+## Preventing Issues
+
+### Best Practices
+
+1. **Test in sandbox first**
+2. **Keep LaTeX simple**
+3. **Regular backups**
+4. **Update browser**
+5. **Monitor app updates**
+6. **Train users**
+
+### Regular Maintenance
+
+- **Weekly:** Check app status
+- **Monthly:** Review usage stats
+- **Quarterly:** Update documentation
+- **Yearly:** Review permissions
+
+---
+
+## Known Issues
+
+### Current Known Issues
+
+Check our [status page](https://yamuno.atlassian.net/servicedesk/customer/portals) for:
+- Ongoing incidents
+- Known bugs
+- Scheduled maintenance
+
+### Workarounds
+
+We document workarounds for known issues in support articles.
+
+---
+
+## Related Documentation
+
+- 📖 [FAQ](/docs/latex-math-for-confluence/features/faq) - Frequently asked questions
+- 📖 [Getting Started](/docs/latex-math-for-confluence/features/getting-started/index) - Setup guide
+- 📖 [Features](/docs/latex-math-for-confluence/features/features/inline-macro) - Feature documentation
+- 💬 [Support Portal](https://yamuno.atlassian.net/servicedesk/customer/portals)
+
+---
+
+**Last Updated:** January 2025

@@ -1,0 +1,122 @@
+---
+title: Known Issues
+description: Current limitations, known issues, and workarounds for Charts for Jira Dashboard
+---
+
+# Known Issues & Limitations
+
+This page lists current known issues, limitations, and workarounds for Charts - Reports and Graphs for Jira Dashboard.
+
+### Performance Issues
+
+#### Large Dataset Performance
+
+**Issue**: Charts may load slowly when processing more than 1000 issues
+**Impact**: Loading times of 10+ seconds on large datasets
+**Workaround**:
+
+- Use more specific JQL filters to reduce data scope
+- Limit time ranges (e.g., last 90 days instead of all time)
+- Consider breaking large charts into smaller, focused ones
+
+#### Memory Usage with Multiple Charts
+
+**Issue**: Browser memory usage increases with multiple charts on dashboard
+**Impact**: Potential browser slowdown with 10+ charts
+**Workaround**:
+
+- Limit to 8 charts per dashboard
+- Use browser refresh periodically
+- Close unused browser tabs
+
+### Data Display Issues
+
+#### Custom Field Limitations
+
+**Issue**: Some custom field types not fully supported for grouping
+**Affected Fields**:
+
+- Multi-select custom fields
+- Cascading select fields
+- User picker fields with multiple users
+
+**Workaround**: Use labels or components for grouping instead
+
+#### JQL Timeout on Complex Queries
+
+**Issue**: Very complex JQL queries may timeout
+**Impact**: Chart fails to load with "Query timeout" error
+**Workaround**:
+
+- Simplify JQL queries
+- Remove unnecessary OR conditions
+- Use indexed fields in filters
+
+#### Unicode Character Display
+
+**Issue**: Some Unicode characters may not display correctly in chart labels
+**Impact**: Non-Latin characters appear as squares or question marks
+**Workaround**: Use ASCII characters in field values where possible
+
+### Chart-Specific Issues
+
+#### Pie Chart Slice Limit
+
+**Issue**: Pie charts become unreadable with more than 8 slices
+**Impact**: Small slices are difficult to distinguish
+**Workaround**:
+
+- Group smaller categories into "Others"
+- Use bar charts for more than 8 categories
+- Apply JQL filters to reduce categories
+
+#### Line Chart Date Formatting
+
+**Issue**: Date labels may overlap on line charts with many data points
+**Impact**: X-axis labels become unreadable
+**Workaround**:
+
+- Use shorter time periods
+- Enable label rotation in settings
+- Switch to area chart for better spacing
+
+#### Scatter Plot Color Mapping
+
+**Issue**: Color mapping not available for third dimension in scatter plots
+**Impact**: Limited visual differentiation of data points
+**Workaround**: Use different chart types for multi-dimensional data
+
+### Dashboard Integration
+
+#### Gadget Sizing Constraints
+
+**Issue**: Chart gadgets have minimum size restrictions
+**Impact**: Charts may not fit well in small dashboard spaces
+**Workaround**:
+
+- Use recommended gadget sizes
+- Create separate dashboards for different chart sizes
+- Use table view for compact displays
+
+### Permission & Access Issues
+
+#### Cross-Project Permissions
+
+**Issue**: Users may see empty charts if lacking permissions for some projects
+**Impact**: Incomplete data visualization without clear error indication
+**Workaround**:
+
+- Verify project permissions before creating charts
+- Use project-specific dashboards
+- Add permission checks to JQL queries
+
+#### Shared Dashboard Access
+
+**Issue**: Shared dashboards may not work correctly for users with different permissions
+**Impact**: Inconsistent chart data between users
+**Workaround**:
+
+- Use role-based dashboard sharing
+- Create permission-specific chart versions
+- Document required permissions for each chart
+

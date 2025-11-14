@@ -1,0 +1,74 @@
+---
+title: Getting Started
+description: Set up API tokens and make your first request
+order: 1
+---
+
+# Getting Started with the REST API
+
+## Step 1: Access API Token Management
+
+1. Navigate to **Confluence Settings** (⚙️ icon in top right)
+2. Under **Apps**, select **Markdown Importer for Confluence**
+3. Click on the **API** tab in the header
+
+## Step 2: Create an API Token
+
+1. Click **Create New Token**
+2. Enter a unique label (e.g., `production`, `ci-cd-pipeline`, `staging`)
+   - Label requirements:
+     - 3-50 characters
+     - Letters, numbers, hyphens, and underscores only
+     - Must be unique
+3. Select an expiration period:
+   - 1 Day
+   - 3 Days
+   - 1 Week
+   - 2 Weeks
+   - 1 Month (30 days)
+4. Click **Create Token**
+5. **Important**: Copy the token immediately - you won't be able to see it again!
+
+## Step 3: Store Your Token Securely
+
+⚠️ **Security Warning**: Never commit tokens to version control or expose them in client-side code.
+
+## Step 4: Find Your API Endpoint
+
+Your unique API endpoint URL is displayed in the API Token Management page under "API Documentation" section.
+
+**Example:**
+
+```
+https://yamuno-test.atlassian.net/wiki/apps/ab418ef5-23d6-40b6-bfae-9a9a3c977f32/b2653bbd-8dc5-4398-baf5-bdf02c455308/webtrigger
+```
+
+## Step 5: Make Your First Request
+
+```bash
+curl -X POST "$CONFLUENCE_API_ENDPOINT" \
+  -H "Authorization: Bearer $CONFLUENCE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "spaceId": "DOCS",
+    "parentId": "123456789",
+    "pageTitle": "My First API Page",
+    "content": "# Hello World\n\nThis is my first API-created page!\n\n## Features\n\n- Easy to use\n- Fast deployment\n- Automatic conversion",
+    "overwrite": false
+  }'
+```
+
+**Success Response:**
+
+```json
+{
+  "body": "Success: Page created successfully"
+}
+```
+
+## Next Steps
+
+- Learn about [Authentication](/docs/markdown-importer-for-confluence/rest-api/authentication) and security features
+- Explore the [API Reference](/docs/markdown-importer-for-confluence/rest-api/api-reference) for detailed endpoint documentation
+- Check out [Examples](/docs/markdown-importer-for-confluence/rest-api/examples) in multiple programming languages
+- Review [Best Practices](/docs/markdown-importer-for-confluence/rest-api/best-practices) for production use

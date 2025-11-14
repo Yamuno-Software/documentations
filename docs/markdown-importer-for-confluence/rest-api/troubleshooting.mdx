@@ -1,0 +1,422 @@
+---
+title: Troubleshooting
+description: Common issues and solutions
+order: 7
+---
+
+# Troubleshooting
+
+## Common Issues
+
+### Issue: "Unauthorized" Error (401)
+
+**Possible Causes:**
+
+- Missing Authorization header
+- Incorrect token format
+- Token not found in system
+
+**Solutions:**
+
+- Verify header format: `Authorization: Bearer YOUR_TOKEN`
+- Check token was copied correctly (no extra spaces or line breaks)
+- Ensure token hasn't been deleted from the system
+- Verify token exists in API Token Management page
+
+**Test Command:**
+
+```bash
+# Test if your token format is correct
+curl -v -X POST "$CONFLUENCE_API_ENDPOINT" \
+  -H "Authorization: Bearer $CONFLUENCE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"spaceId":"TEST","parentId":"123","pageTitle":"Test","content":"# Test"}'
+```
+
+---
+
+### Issue: "Forbidden" Error (403)
+
+**Possible Causes:**
+
+- Token expired
+- Token verification failed
+- Clock synchronization issue
+
+**Solutions:**
+
+- Check token expiration date in token management UI
+- Create new token if expired
+- Verify system clock is synchronized
+- Check JWT token claims using jwt.io
+
+**Debug Steps:**
+
+1. Visit <https://jwt.io>
+2. Paste your token in the debugger
+3. Check the `exp` (expiration) claim
+4. Compare with current Unix timestamp
+
+---
+
+### Issue: "License Expired" Error (402)
+
+**Possible Causes:**
+
+- License was inactive when token was created
+- Token created during trial period that has ended
+- License renewal pending
+
+**Solutions:**
+
+- Verify current license status in Confluence settings
+- Create new token with active license
+- Contact admin to renew license
+- Check license expiration date
+
+---
+
+### Issue: "Already Exists" Error (400)
+
+**Possible Causes:**
+
+- Page with same title and parent already exists
+- `overwrite` parameter set to `false`
+
+**Solutions:**
+
+- Set `overwrite: true` to update existing page
+- Use different page title
+- Verify `parentId` is correct
+- Check for duplicate pages in the space
+
+**Example Fix:**
+
+```json
+{
+  "spaceId": "DOCS",
+  "parentId": "123456789",
+  "pageTitle": "API Reference",
+  "content": "# Updated Content",
+  "overwrite": true  // Set to true to update
+}
+```
+
+---
+
+### Issue: "Not Found" Error (404)
+
+**Possible Causes:**
+
+- Invalid `spaceId`
+- Invalid `parentId`
+- Parent page deleted
+- User lacks access to space/parent
+
+**Solutions:**
+
+- Verify space exists and ID is correct
+- Confirm parent page ID is valid
+- Check user has access to space/parent
+- Use Confluence API to verify IDs
+
+**Verify Space and Page:**
+
+```bash
+# Check if space exists
+curl -X GET "https://your-site.atlassian.net/wiki/api/v2/spaces?keys=DOCS" \
+  -H "Authorization: Bearer YOUR_CONFLUENCE_TOKEN"
+
+# Check if parent page exists
+curl -X GET "https://your-site.atlassian.net/wiki/api/v2/pages/123456789" \
+  -H "Authorization: Bearer YOUR_CONFLUENCE_TOKEN"
+```
+
+---
+
+### Issue: "Bad Request" Error (400)
+
+**Possible Causes:**
+
+- Missing required fields
+- Invalid JSON format
+- Empty content
+- Invalid markdown
+- Special characters not escaped
+
+**Solutions:**
+
+- Verify all required fields present (`spaceId`, `parentId`, `pageTitle`, `content`)
+- Validate JSON structure
+- Check content is non-empty string
+- Test markdown syntax
+- Escape special characters in JSON
+
+**Validation Example:**
+
+```javascript
+function validatePayload(payload) {
+  const required = ['spaceId', 'parentId', 'pageTitle', 'content'];
+
+  for (const field of required) {
+    if (!payload[field]) {
+      throw new Error(`Missing required field: ${field}`);
+    }
+  }
+
+  if (payload.content.trim().length === 0) {
+    throw new Error('Content cannot be empty');
+  }
+
+  return true;
+}
+```
+
+---
+
+### Issue: "Internal Error" Error (500)
+
+**Possible Causes:**
+
+- Server-side issue
+- Temporary service disruption
+- Malformed content causing processing error
+
+**Solutions:**
+
+- Retry request after brief delay
+- Check Atlassian Status page
+- Simplify content to isolate issue
+- Contact support if persists
+
+**Retry with Exponential Backoff:**
+
+```javascript
+async function retryRequest(fn, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (error.status !== 500 || i === maxRetries - 1) {
+        throw error;
+      }
+      await sleep(1000 * Math.pow(2, i));
+    }
+  }
+}
+```
+
+---
+
+## Debugging Tips
+
+### Test with curl First
+
+Isolate issues from your code by testing with curl:
+
+```bash
+curl -v -X POST "$CONFLUENCE_API_ENDPOINT" \
+  -H "Authorization: Bearer $CONFLUENCE_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "spaceId": "DOCS",
+    "parentId": "123456789",
+    "pageTitle": "Test Page",
+    "content": "# Test\n\nThis is a test.",
+    "overwrite": false
+  }'
+```
+
+The `-v` flag shows full request/response details.
+
+### Enable Verbose Logging
+
+**cURL:**
+
+```bash
+curl -v -X POST "..." # Shows headers and response
+```
+
+**Node.js (axios):**
+
+```javascript
+axios.interceptors.request.use(request => {
+  console.log('Request:', JSON.stringify(request, null, 2));
+  return request;
+});
+
+axios.interceptors.response.use(
+  response => {
+    console.log('Response:', JSON.stringify(response.data, null, 2));
+    return response;
+  },
+  error => {
+    console.error('Error:', JSON.stringify(error.response?.data, null, 2));
+    return Promise.reject(error);
+  }
+);
+```
+
+### Validate JSON Payload
+
+Ensure your JSON is valid:
+
+```bash
+# Linux/macOS
+echo '{"spaceId":"DOCS"}' | jq .
+
+# Or use an online JSON validator
+```
+
+### Check Token in JWT Debugger
+
+1. Visit <https://jwt.io>
+2. Paste token to view claims
+3. Verify expiration (`exp` claim)
+4. Check issued at (`iat` claim)
+5. Verify signature (if you have the secret)
+
+### Inspect HTTP Headers
+
+Make sure headers are correct:
+
+```javascript
+console.log('Headers:', {
+  'Authorization': `Bearer ${token.substring(0, 20)}...`, // Never log full token
+  'Content-Type': 'application/json'
+});
+```
+
+### Test with Minimal Content
+
+If you're getting errors, try with minimal content:
+
+```json
+{
+  "spaceId": "DOCS",
+  "parentId": "123456789",
+  "pageTitle": "Test",
+  "content": "# Test",
+  "overwrite": false
+}
+```
+
+## Network Issues
+
+### SSL/TLS Certificate Errors
+
+**Problem:** Certificate verification fails
+
+**Solution:**
+
+```javascript
+// Development only - NEVER in production!
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+```
+
+Better solution: Fix certificate chain or use proper CA certificates.
+
+### Timeout Errors
+
+**Problem:** Request times out
+
+**Solution:**
+
+```javascript
+const axios = require('axios');
+
+const instance = axios.create({
+  timeout: 30000, // 30 seconds
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  }
+});
+```
+
+### Proxy Issues
+
+If behind a corporate proxy:
+
+```bash
+export HTTP_PROXY=http://proxy.example.com:8080
+export HTTPS_PROXY=http://proxy.example.com:8080
+```
+
+## Performance Issues
+
+### Slow Response Times
+
+**Possible Causes:**
+
+- Large content size
+- Network latency
+- Server load
+
+**Solutions:**
+
+- Reduce content size
+- Split large documents
+- Implement caching
+- Use CDN for assets
+
+### Rate Limiting
+
+**Problem:** Too many requests
+
+**Solution:**
+
+```javascript
+const pLimit = require('p-limit');
+
+const limit = pLimit(3); // Max 3 concurrent requests
+
+const promises = pages.map(page =>
+  limit(() => importToConfluence(page))
+);
+
+await Promise.all(promises);
+```
+
+## Getting Help
+
+If you're still experiencing issues:
+
+1. **Check Documentation:**
+   - [API Reference](/docs/markdown-importer-for-confluence/rest-api/api-reference)
+   - [Examples](/docs/markdown-importer-for-confluence/rest-api/examples)
+   - [Best Practices](/docs/markdown-importer-for-confluence/rest-api/best-practices)
+
+2. **Gather Information:**
+   - API endpoint URL
+   - Request payload (remove token!)
+   - Response status code
+   - Response body
+   - Token expiration date
+   - License status
+
+3. **Contact Support:**
+   - Support Portal: <https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51>
+   - Include error messages and steps to reproduce
+   - Attach logs (with tokens removed!)
+
+## Diagnostic Checklist
+
+- [ ] Token is valid and not expired
+- [ ] License is active
+- [ ] Authorization header format is correct
+- [ ] All required fields are present
+- [ ] JSON payload is valid
+- [ ] Content is not empty
+- [ ] Space ID exists and is accessible
+- [ ] Parent page ID exists and is accessible
+- [ ] Network connectivity is working
+- [ ] No firewall blocking requests
+- [ ] SSL/TLS certificates are valid
+- [ ] Using correct API endpoint URL
+
+## Related Documentation
+
+- [API Reference](/docs/markdown-importer-for-confluence/rest-api/api-reference) - Endpoint details
+- [Authentication](/docs/markdown-importer-for-confluence/rest-api/authentication) - Token management
+- [FAQ](/docs/markdown-importer-for-confluence/rest-api/faq) - Frequently asked questions

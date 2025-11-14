@@ -1,0 +1,105 @@
+---
+title: Getting Started
+order: 1
+---
+
+# Quick Start Guide
+
+Get up and running with LaTeX Math for Confluence in just 2 simple steps!
+
+## Overview
+
+LaTeX Math for Confluence allows you to create beautiful mathematical equations using standard LaTeX syntax. Whether you need inline equations within paragraphs or display-style block equations, we've got you covered.
+
+![LaTeX Math for Confluence Highlights](https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/latex/latex/highlights/highlgiht.jpg)
+
+## Prerequisites
+
+- Atlassian Confluence Cloud instance
+- App installed from Atlassian Marketplace
+- Confluence Space or Page edit permissions
+
+## Step 1: Configure Access Control (Optional)
+
+By default, everyone with page edit permission can edit and add LaTeX macros. You can optionally restrict this to specific users.
+
+### Why Configure Access Control?
+
+Access control allows you to restrict who can create and edit LaTeX macros. This is useful for:
+- **Quality Control** - Restrict editing to qualified users
+- **Compliance** - Meet enterprise security requirements
+- **Data Integrity** - Prevent unauthorized modifications
+
+### How to Configure
+
+1. Navigate to **Confluence Administration** → **Manage Apps**
+2. Find **LaTeX Math for Confluence** in the app list
+3. Click **Configure** to open the settings page
+4. Go to the **Permissions** tab
+5. Choose your access control mode:
+   - **Toggle OFF** - Everyone with space access can edit (default)
+   - **Toggle ON** - Only whitelisted users can edit
+
+### Adding Users to Whitelist
+
+If you enable access control:
+
+1. Toggle **"Restrict edit access"** to **ON**
+2. Click **"Add User"** button
+3. Search and select users from your Confluence instance
+4. Repeat for additional users
+5. Click **"Save Changes"**
+
+> **💡 Tip:** For small teams, you can skip this step and let everyone edit. For larger organizations or sensitive content, enable the whitelist.
+
+---
+
+## Step 2: Add Macro to Page
+
+Once permissions are configured, you can start adding LaTeX equations to your Confluence pages.
+
+### Using the Slash Command
+
+1. **Open a Confluence page** in edit mode
+2. **Type the slash command:**
+   ```
+   /latex
+   ```
+3. **Select the macro** from the dropdown:
+   - **LaTeX Math for Confluence (Block)** - For display equations
+   - **LaTeX Math for Confluence (Inline)** - For inline equations
+4. **Write your LaTeX** in the editor
+5. **Save** and publish your page
+
+### Quick Example
+
+**Inline Equation:**
+```latex
+The formula $E = mc^2$ represents mass-energy equivalence.
+```
+
+**Block Equation:**
+```latex
+\[
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+\]
+```
+
+---
+
+## What's Next?
+
+Now that you're set up, explore these features:
+
+- 📖 [Learn about Inline Macros](/docs/latex-math-for-confluence/features/inline-macro)
+- 📖 [Learn about Block Macros](/docs/latex-math-for-confluence/features/block-macro)
+- 📖 [Explore the Live Preview](/docs/latex-math-for-confluence/features/live-preview)
+- 📖 [Configure Advanced Settings](/docs/latex-math-for-confluence/configuration/access-control)
+
+---
+
+## Need Help?
+
+- 📚 [Read the FAQ](/docs/latex-math-for-confluence/faq)
+- 🐛 [Troubleshooting Guide](/docs/latex-math-for-confluence/troubleshooting)
+- 💬 [Contact Support](https://yamuno.atlassian.net/servicedesk/customer/portals)

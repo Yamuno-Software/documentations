@@ -1,0 +1,253 @@
+---
+title: FAQ
+description: Frequently asked questions about the REST API
+order: 8
+---
+
+# Frequently Asked Questions
+
+## General Questions
+
+### Can I use the API without a license?
+
+No, an active Markdown Importer license is required to create and use API tokens. The license must be active at the time of token creation.
+
+### How many API tokens can I create?
+
+You can create up to 50 tokens per Confluence instance. This limit helps maintain security and manageability.
+
+### What happens to my tokens if my license expires?
+
+Existing tokens remain valid until their expiration date. However, you cannot create new tokens without an active license. This means you can continue using the API with existing tokens even if the license expires after token creation.
+
+### Can I extend a token's expiration?
+
+No, tokens cannot be extended once created. You must create a new token before the old one expires. We recommend setting up a token rotation schedule to ensure continuous API access.
+
+### Are tokens tied to a specific user?
+
+Yes, tokens are associated with the user who created them and inherit their Confluence permissions. This means the API can only create/update pages in spaces where the user has write access.
+
+### Can I revoke a token?
+
+Yes, you can revoke tokens at any time from the API Token Management page. Once revoked, the token becomes invalid immediately and cannot be used for API requests.
+
+### Is there a rate limit?
+
+The API is subject to Atlassian's platform rate limits. We recommend implementing exponential backoff and rate limiting in your application to avoid hitting these limits.
+
+---
+
+## Technical Questions
+
+### What markdown syntax is supported?
+
+Standard CommonMark syntax is supported. The content is automatically transformed to Confluence ADF (Atlas Document Format). Supported features include:
+
+- Headers (H1-H6)
+- Bold, italic, strikethrough
+- Lists (ordered and unordered)
+- Code blocks with syntax highlighting
+- Tables
+- Links
+- Images (publicly accessible URLs)
+- Blockquotes
+
+### Can I import images via the API?
+
+Markdown image syntax is supported, but images must be publicly accessible URLs. The API will reference these URLs in the created Confluence page. Local images are not currently supported via the API - they must be uploaded separately.
+
+### Can I create pages with attachments?
+
+Currently, the API supports page content only. Attachments must be uploaded separately using Confluence's REST API. You can create the page via our API, then add attachments using Confluence's attachment endpoints.
+
+### Can I update page properties or labels?
+
+Currently, the API supports title and content updates only. To update page properties, labels, or other metadata, use the Confluence REST API after creating the page with our API.
+
+### What happens if I send the same request twice?
+
+- Without `overwrite: true`: You'll get an "already exists" error (400)
+- With `overwrite: true`: The page will be updated with the new content, incrementing the version number
+
+### Can I create blog posts?
+
+No, the API currently supports Confluence pages only. Blog post creation may be added in future versions.
+
+### How do I handle special characters in markdown?
+
+Special characters should be properly escaped in the JSON payload. Use standard JSON escaping:
+
+```json
+{
+  "content": "# Title with \"quotes\"\n\nContent with \\backslash"
+}
+```
+
+### Can I create pages in multiple spaces?
+
+Yes, you can create pages in any space where the token owner has write permissions. Just specify different `spaceId` values in your requests.
+
+### What's the maximum content size?
+
+The API is subject to Confluence page size limits (approximately 1MB). For larger documents, consider splitting them into multiple pages.
+
+---
+
+## Security Questions
+
+### How are tokens stored?
+
+Tokens are stored encrypted using Forge KVS (Key-Value Store) secrets, which provides bank-level encryption. Tokens are hashed and cannot be retrieved after creation.
+
+### Can I restrict token access to specific spaces?
+
+Currently, tokens inherit the creating user's permissions across all spaces. Space-specific tokens may be added in future versions. As a workaround, create a dedicated user account with limited space access.
+
+### What should I do if a token is compromised?
+
+1. Immediately revoke the token from the API Token Management page
+2. Create a new token
+3. Update your applications with the new token
+4. Review audit logs to identify any unauthorized usage
+5. Consider rotating all tokens as a precaution
+
+### Are API requests logged?
+
+Yes, all API requests are logged for security and debugging purposes, including:
+
+- Timestamp
+- User/token identification
+- Request outcome (success/failure)
+- Space and page information
+
+Token values are never logged.
+
+### Can I use the same token in multiple applications?
+
+Technically yes, but it's not recommended. Create separate tokens for each application or environment to:
+
+- Improve security through isolation
+- Make revocation more granular
+- Track usage per application
+- Simplify troubleshooting
+
+### Is the API endpoint secure?
+
+Yes, all API endpoints use HTTPS. Never send tokens over unencrypted HTTP connections.
+
+---
+
+## Integration Questions
+
+### Can I use this with CI/CD pipelines?
+
+Yes! The API is perfect for CI/CD integration. Check out our [GitHub Actions](/docs/markdown-importer-for-confluence/rest-api/examples#github-actions) and [GitLab CI/CD](/docs/markdown-importer-for-confluence/rest-api/examples#gitlab-cicd) examples.
+
+### Does this work with GitHub/GitLab webhooks?
+
+Yes, you can set up webhooks to trigger API calls when documentation is updated in your repository.
+
+### Can I automate documentation deployment?
+
+Absolutely! That's one of the primary use cases. You can automatically deploy documentation from your repository to Confluence whenever you push changes.
+
+### How do I handle multiple documentation files?
+
+You can make multiple API calls sequentially or in parallel (with rate limiting). See our [batch import examples](/docs/markdown-importer-for-confluence/rest-api/examples#batch-import).
+
+### Can I migrate from another documentation system?
+
+Yes, you can write scripts to read from your current system and import to Confluence via the API. The API supports bulk operations through multiple sequential calls.
+
+---
+
+## Troubleshooting Questions
+
+### Why am I getting 401 Unauthorized?
+
+Common causes:
+
+- Missing or incorrect Authorization header
+- Token copied incorrectly (extra spaces/line breaks)
+- Token deleted from system
+
+See [Troubleshooting: Unauthorized](/docs/markdown-importer-for-confluence/rest-api/troubleshooting#issue-unauthorized-error-401) for solutions.
+
+### Why is my token expired?
+
+Tokens expire based on the period selected at creation (1 day to 30 days). Create a new token before the old one expires.
+
+### How do I find my space ID and parent page ID?
+
+The easiest way is to use the Markdown Importer app itself:
+
+1. Open **Markdown Importer for Confluence** in your Confluence instance
+2. Use the **Space selector** dropdown - the space ID will be visible when you select a space
+3. Use the **Page selector** dropdown - the page ID will be displayed in the selection
+
+See [API Reference: Finding IDs](/docs/markdown-importer-for-confluence/rest-api/api-reference#finding-space-and-page-ids) for more details.
+
+### Why can't I create pages in a space?
+
+Ensure the user who created the token has write permissions in that space. Check permissions in Confluence space settings.
+
+### My markdown isn't rendering correctly. What should I do?
+
+1. Validate markdown syntax
+2. Test with simple content first
+3. Check supported markdown features
+4. Verify special characters are properly escaped
+5. Contact support with example content
+
+---
+
+## Pricing & Licensing
+
+### Is the API included with my license?
+
+Yes, the REST API is included with all active Markdown Importer for Confluence licenses at no additional cost.
+
+### Can trial users access the API?
+
+Yes, trial users can create and use API tokens during the trial period. Tokens created during the trial remain valid until their expiration date.
+
+---
+
+## Feature Requests
+
+### Will you add support for [feature]?
+
+We're constantly improving the API based on user feedback. Submit feature requests through our support portal.
+
+### Can I request custom API endpoints?
+
+We consider all feature requests. Common requests are prioritized for future releases.
+
+### Is there a public API roadmap?
+
+Check our [release notes](/docs/markdown-importer-for-confluence/release-notes) for recently added features and upcoming improvements.
+
+---
+
+## Need More Help?
+
+If your question isn't answered here:
+
+1. **Check Documentation:**
+   - [Getting Started](/docs/markdown-importer-for-confluence/rest-api/getting-started)
+   - [API Reference](/docs/markdown-importer-for-confluence/rest-api/api-reference)
+   - [Troubleshooting](/docs/markdown-importer-for-confluence/rest-api/troubleshooting)
+   - [Examples](/docs/markdown-importer-for-confluence/rest-api/examples)
+
+2. **Contact Support:**
+   - Support Portal: <https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51>
+   - Include relevant details (error messages, request payload without token, etc.)
+
+3. **Community:**
+   - Check marketplace reviews for common questions
+   - Join discussions with other users
+
+---
+
+**Last Updated**: 2025-10-07

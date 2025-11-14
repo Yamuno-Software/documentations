@@ -1,0 +1,300 @@
+---
+title: Adding Macros
+order: 1
+---
+
+# Adding LaTeX Macros
+
+Learn how to add LaTeX Math macros to your Confluence pages using the slash command.
+
+## Overview
+
+LaTeX Math for Confluence makes it easy to add mathematical equations to your pages. Simply use the `/latex` slash command to insert either inline or block macros.
+
+![Adding LaTeX Macros](https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/latex/latex/highlights/4.jpg)
+
+---
+
+## Using the Slash Command
+
+### Step 1: Open a Confluence Page
+
+1. Navigate to any Confluence page
+2. Click **Edit** to enter edit mode
+3. Place your cursor where you want to add the equation
+
+### Step 2: Type the Slash Command
+
+1. Type `/latex` in the editor
+2. A dropdown menu appears with two options:
+   - **LaTeX Math for Confluence (Inline)** - For inline equations
+   - **LaTeX Math for Confluence (Block)** - For display equations
+
+### Step 3: Select the Macro Type
+
+**For inline equations:**
+- Select **LaTeX Math for Confluence (Inline)**
+- Use for equations within text (e.g., E = mc²)
+
+**For block equations:**
+- Select **LaTeX Math for Confluence (Block)**
+- Use for standalone equations on their own line
+
+### Step 4: Enter Your LaTeX Code
+
+1. The macro editor opens
+2. Type your LaTeX equation
+3. See live preview as you type
+4. Click **Insert** or **Save**
+
+### Step 5: Publish the Page
+
+1. Click **Publish** in Confluence
+2. Your equation renders on the published page
+3. Everyone with page access can view it
+
+---
+
+## Quick Examples
+
+### Adding an Inline Equation
+
+**Use case:** Equation within a sentence
+
+**Steps:**
+1. Type: `/latex`
+2. Select: **LaTeX Math for Confluence (Inline)**
+3. Enter: `E = mc^2`
+4. Click **Insert**
+
+**Result:** The equation appears inline with your text like this: E = mc²
+
+---
+
+### Adding a Block Equation
+
+**Use case:** Standalone equation with emphasis
+
+**Steps:**
+1. Type: `/latex`
+2. Select: **LaTeX Math for Confluence (Block)**
+3. Enter: `\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}`
+4. Click **Insert**
+
+**Result:** The equation appears centered on its own line
+
+---
+
+## Macro Types Explained
+
+### Inline Macro
+
+**Characteristics:**
+- Flows with text
+- Smaller size
+- No line breaks
+- Ideal for simple equations
+
+**Best for:**
+- Variables in sentences (x, y, z)
+- Simple formulas (a² + b²)
+- Chemical formulas (H₂O)
+- Mathematical notation in paragraphs
+
+**Example usage:**
+```
+The Pythagorean theorem states that a² + b² = c² for right triangles.
+```
+
+---
+
+### Block Macro
+
+**Characteristics:**
+- Standalone display
+- Centered on page
+- Larger size
+- Emphasized presentation
+
+**Best for:**
+- Complex equations
+- Important formulas
+- Multi-line expressions
+- Equations needing emphasis
+
+**Example usage:**
+Display the quadratic formula prominently:
+```
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+```
+
+---
+
+## Common LaTeX Syntax
+
+### Basic Operations
+
+| Operation | LaTeX Code | Example |
+|-----------|-----------|---------|
+| Superscript | `x^2` | x² |
+| Subscript | `x_1` | x₁ |
+| Fraction | `\frac{a}{b}` | a/b |
+| Square root | `\sqrt{x}` | √x |
+| Sum | `\sum_{i=1}^{n}` | Σ |
+| Integral | `\int_{a}^{b}` | ∫ |
+
+### Greek Letters
+
+| Letter | LaTeX Code |
+|--------|-----------|
+| Alpha | `\alpha` |
+| Beta | `\beta` |
+| Gamma | `\gamma` |
+| Delta | `\delta` |
+| Pi | `\pi` |
+| Sigma | `\sigma` |
+
+### Common Symbols
+
+| Symbol | LaTeX Code |
+|--------|-----------|
+| Infinity | `\infty` |
+| Plus/minus | `\pm` |
+| Multiplication | `\times` |
+| Division | `\div` |
+| Not equal | `\neq` |
+| Less than or equal | `\leq` |
+| Greater than or equal | `\geq` |
+
+---
+
+## Tips for Adding Macros
+
+### ✅ Best Practices
+
+1. **Choose the right macro type**
+   - Inline for text integration
+   - Block for standalone equations
+
+2. **Use live preview**
+   - Check your equation before inserting
+   - Fix errors immediately
+
+3. **Keep it simple**
+   - Use clear LaTeX syntax
+   - Avoid overly complex expressions
+
+4. **Test before publishing**
+   - Preview in edit mode
+   - Ensure equation renders correctly
+
+5. **Use standard LaTeX**
+   - Stick to KaTeX supported commands
+   - Check [KaTeX documentation](https://katex.org/docs/supported.html)
+
+### ❌ Common Mistakes
+
+1. **Wrong macro type**
+   - Using inline for complex equations (too small)
+   - Using block for simple variables (too much space)
+
+2. **Syntax errors**
+   - Missing braces { }
+   - Unclosed delimiters
+   - Typos in commands
+
+3. **Unsupported commands**
+   - Using LaTeX packages not in KaTeX
+   - Custom commands that don't exist
+
+4. **Not using preview**
+   - Inserting without checking
+   - Missing errors until published
+
+---
+
+## Editing Existing Macros
+
+### How to Edit
+
+1. **Open the page** in edit mode
+2. **Click on the macro** you want to edit
+3. **Edit the LaTeX code** in the editor
+4. **See live preview** of changes
+5. **Save** and **Publish**
+
+### Deleting Macros
+
+1. Open page in edit mode
+2. Click on the macro
+3. Press **Delete** or **Backspace**
+4. Macro is removed
+5. Publish to save changes
+
+---
+
+## Troubleshooting
+
+### Slash Command Not Working
+
+**Problem:** `/latex` doesn't show macro options
+
+**Solutions:**
+1. Check you're in **edit mode**
+2. Ensure app is installed
+3. Verify you have **edit permissions**
+4. Check access control settings
+5. Try typing the full command: `/latex`
+
+### Can't Insert Macro
+
+**Problem:** Insert button doesn't work
+
+**Solutions:**
+1. **Fix syntax errors** - Check LaTeX code
+2. **Wait for preview** - Let it render
+3. **Refresh the page** - Try again
+4. **Check permissions** - Ensure you're in whitelist (if enabled)
+
+### Macro Doesn't Appear
+
+**Problem:** Macro inserted but not visible
+
+**Solutions:**
+1. **Publish the page** - Save changes
+2. **Refresh browser** - Clear cache
+3. **Check syntax** - Ensure valid LaTeX
+4. **Try different browser** - Rule out browser issues
+
+---
+
+## Keyboard Shortcuts
+
+### In the Editor
+
+| Action | Shortcut |
+|--------|----------|
+| Insert macro | Enter |
+| Cancel | Escape |
+| New line | Shift + Enter |
+
+---
+
+## Related Documentation
+
+- 📖 [Inline Macro](/docs/latex-math-for-confluence/features/inline-macro) - Detailed inline macro guide
+- 📖 [Block Macro](/docs/latex-math-for-confluence/features/block-macro) - Detailed block macro guide
+- 📖 [Live Preview](/docs/latex-math-for-confluence/features/live-preview) - Using the preview feature
+- 📖 [Getting Started](/docs/latex-math-for-confluence/getting-started) - Quick setup guide
+
+---
+
+## Need Help?
+
+- 💬 [Contact Support](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📚 [View All Documentation](/docs/latex-math-for-confluence/INDEX)
+- ❓ [FAQ](/docs/latex-math-for-confluence/faq) - Common questions
+
+---
+
+**Last Updated:** January 2025

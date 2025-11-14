@@ -1,0 +1,72 @@
+---
+title: REST API
+description: Programmatically import markdown content into Confluence pages
+order: 3
+---
+
+# Markdown Importer REST API
+
+![api](https://marketplace.atlassian.com/product-listing/files/cbfd51ed-8e6a-468b-96ed-86aa4b949dee?width=1840&height=900)
+
+The Markdown Importer REST API allows you to programmatically import markdown content into Confluence pages. This feature is designed for automation workflows, CI/CD pipelines, bulk migrations, and custom integrations.
+
+> **Note:** The REST API currently supports **importing only**. Export functionality via API is not yet available and must be done through the UI.
+
+## Key Features
+
+- **Secure Authentication**: JWT-based token authentication
+- **Automatic Conversion**: Markdown to Confluence ADF (Atlas Document Format)
+- **Conflict Handling**: Create new pages or update existing ones
+- **License Validation**: Tied to your active Confluence license
+- **Audit Logging**: Complete request logging for security and debugging
+
+## Prerequisites
+
+- Active Markdown Importer for Confluence license
+- Admin access to Confluence global settings
+- HTTPS-enabled environment for secure API calls
+
+## Documentation Sections
+
+Explore the REST API documentation:
+
+- [Getting Started](/docs/markdown-importer-for-confluence/rest-api/getting-started) - Set up API tokens and make your first request
+- [Authentication](/docs/markdown-importer-for-confluence/rest-api/authentication) - Token management and security
+- [API Reference](/docs/markdown-importer-for-confluence/rest-api/api-reference) - Endpoints, request/response formats
+- [Limitations](/docs/markdown-importer-for-confluence/rest-api/limitations) - API usage limits and constraints
+- [Examples](/docs/markdown-importer-for-confluence/rest-api/examples) - Code samples in multiple languages
+- [Best Practices](/docs/markdown-importer-for-confluence/rest-api/best-practices) - Security, performance, and error handling
+- [Troubleshooting](/docs/markdown-importer-for-confluence/rest-api/troubleshooting) - Common issues and solutions
+- [FAQ](/docs/markdown-importer-for-confluence/rest-api/faq) - Frequently asked questions
+
+## Quick Start
+
+1. Navigate to **Confluence Settings** → **Apps** → **Markdown Importer for Confluence** → **API** tab
+2. Click **Create New Token** and configure expiration
+3. Copy your token (you won't see it again!)
+4. Make your first API request:
+
+```bash
+curl -X POST "YOUR_API_ENDPOINT" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "spaceId": "DOCS",
+    "parentId": "123456789",
+    "pageTitle": "My First API Page",
+    "content": "# Hello World\n\nThis is my first API-created page!",
+    "overwrite": false
+  }'
+```
+
+## Support
+
+- **Support Portal**: <https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51>
+- **Product Documentation**: <https://yamuno.com/docs/markdown-importer-for-confluence>
+- **Marketplace**: <https://marketplace.atlassian.com/apps/1231894/markdown-importer-for-confluence?hosting=cloud&tab=overview>
+
+---
+
+- **Document Version**: 1.0
+- **Last Updated**: 2025-10-07
+- **Product**: Markdown Importer for Confluence

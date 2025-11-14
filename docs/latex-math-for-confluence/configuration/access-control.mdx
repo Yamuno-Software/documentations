@@ -1,0 +1,325 @@
+# Access Control & Permissions
+
+Control who can edit and add LaTeX macros in your Confluence instance with a simple whitelist feature.
+
+## Overview
+
+Access Control allows administrators to restrict who can edit and add LaTeX macros. When enabled, only users in the whitelist can create or modify equations. When disabled, everyone with space access can edit.
+
+![Access Control Configuration](https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/latex/latex/highlights/2.jpg)
+
+## How It Works
+
+### Access Control Disabled (Default)
+
+**Who can edit:**
+
+- ✅ Everyone with Confluence page edit permission
+- ✅ Anyone with space access
+
+**Use this when:**
+
+- Small, trusted teams
+- Development environments
+- Internal collaboration spaces
+- Quick prototyping
+
+---
+
+### Access Control Enabled
+
+**Who can edit:**
+
+- ✅ Users in the whitelist/allow list
+- ✅ Confluence administrators (always)
+
+**Who cannot edit:**
+
+- ❌ Users not in the whitelist
+- ❌ Even if they have page edit permission
+
+**Use this when:**
+
+- Enterprise environments
+- Sensitive technical content
+- Compliance requirements
+- Quality control needed
+
+---
+
+## Viewing Permissions
+
+**Important:** Everyone with page view access can **view** rendered LaTeX equations. Access control **only restricts editing and adding** macros.
+
+---
+
+## Configuring Access Control
+
+### Step 1: Access Configuration
+
+1. Go to **Confluence Administration**
+2. Click **Manage Apps**
+3. Find **LaTeX Math for Confluence**
+4. Click **Configure**
+5. Go to the **Permissions** tab
+
+### Step 2: Enable or Disable
+
+**Option A: Keep Access Open (Default)**
+
+- Leave the toggle **OFF**
+- Click **Save Changes**
+- Everyone with space access can edit
+
+**Option B: Restrict to Whitelist**
+
+- Toggle **"Restrict edit access"** to **ON**
+- The whitelist section appears below
+- Proceed to add users (see next section)
+- Click **Save Changes**
+
+---
+
+## Managing the Whitelist
+
+### Adding Users to Whitelist
+
+1. Enable **"Restrict edit access"** toggle
+2. Click **"Add User"** button
+3. A search dialog appears
+4. **Search** by typing:
+   - User's name
+   - Email address
+   - Username
+5. **Select** the user from search results
+6. User appears in the whitelist
+7. Repeat for additional users
+8. Click **"Save Changes"**
+
+> **💡 Tip:** You can add multiple users before clicking Save Changes.
+
+### Removing Users from Whitelist
+
+1. Find the user in the whitelist table
+2. Click the **"Remove"** (❌) button
+3. User is removed from the list
+4. Click **"Save Changes"**
+
+### Whitelist Display
+
+The whitelist shows:
+
+- **User display name**
+- **Email address**
+- **Account ID**
+- **Remove action button**
+
+---
+
+## How Access Control Works
+
+### For Whitelisted Users (When Enabled)
+
+1. User edits a Confluence page
+2. User adds or clicks to edit a LaTeX macro
+3. ✅ **Editor opens** - User can edit
+4. User can create new macros and modify existing ones
+5. Changes save normally
+
+### For Non-Whitelisted Users (When Enabled)
+
+1. User edits a Confluence page
+2. User tries to add or edit a LaTeX macro
+3. ❌ **Access Denied** - Error message appears
+4. Message: "You don't have permission to edit LaTeX macros"
+5. User cannot add or modify equations
+
+### For Everyone (When Disabled)
+
+1. User edits a Confluence page with edit permission
+2. User can freely add and edit LaTeX macros
+3. No restrictions apply
+
+### Administrator Override
+
+**Confluence Administrators:**
+
+- ✅ Always have access to edit LaTeX macros
+- ✅ Bypass whitelist restrictions
+- ✅ Can configure access control settings
+- This cannot be disabled
+
+---
+
+## Permission Checks
+
+### What's Required to Edit
+
+Both conditions must be met:
+
+```
+✅ Confluence page edit permission
+        AND
+✅ LaTeX Math whitelist (if access control enabled)
+        =
+Can edit LaTeX macros
+```
+
+### When Checks Occur
+
+Permissions verified:
+
+- When adding a new macro
+- When opening the editor
+- When saving changes
+- Every time a macro is edited
+
+---
+
+## Troubleshooting
+
+### User Gets "Access Denied"
+
+**Problem:** Whitelisted user receives access denied error
+
+**Solutions:**
+
+1. **Verify user is in whitelist**
+   - Check correct email/username
+   - Confirm changes were saved
+2. **Refresh the page**
+   - User should hard refresh (Ctrl+Shift+R)
+   - Try incognito mode
+3. **Check user account**
+   - Ensure Confluence account is active
+   - Verify user is logged in
+4. **Re-add the user**
+   - Remove from whitelist
+   - Add again
+   - Save changes
+
+### Everyone Can Edit (Unexpected)
+
+**Problem:** Whitelist enabled but non-whitelisted users have access
+
+**Solutions:**
+
+1. **Verify toggle is ON**
+   - Check "Restrict edit access" is enabled
+   - Click Save Changes
+2. **Check if users are admins**
+   - Administrators always have access
+   - This is expected behavior
+3. **Clear cache**
+   - Have users refresh their browsers
+   - Clear browser cache
+
+### Can't Find User to Add
+
+**Problem:** User doesn't appear in search
+
+**Solutions:**
+
+1. **Verify user exists**
+   - Check user has Confluence account
+   - Confirm account is active
+2. **Try different search**
+   - Search by full email address
+   - Search by username
+   - Check for typos
+3. **Wait for sync**
+   - New users may take a few minutes to sync
+4. **Contact support**
+   - If user definitely exists but won't appear
+
+---
+
+## Best Practices
+
+### ✅ Do This
+
+1. **Start restrictive** - Enable access control from the beginning if needed
+2. **Document your policy** - Create a page explaining who can edit and why
+3. **Respond to requests** - Process access requests promptly
+4. **Review regularly** - Remove users who no longer need access
+5. **Train whitelisted users** - Ensure they understand LaTeX syntax
+
+### ❌ Avoid This
+
+1. **Don't add everyone** - Defeats the purpose of access control
+2. **Don't ignore requests** - Users will find workarounds
+3. **Don't forget to save** - Always click Save Changes after modifications
+4. **Don't add non-existent users** - Verify accounts exist first
+
+---
+
+## Integration with Confluence Permissions
+
+### Relationship
+
+LaTeX Math permissions work **alongside** Confluence permissions:
+
+| Has Page Edit Permission | In LaTeX Whitelist | Can Edit LaTeX? |
+| ------------------------ | ------------------ | --------------- |
+| ✅ Yes                   | ✅ Yes             | ✅ Yes          |
+| ✅ Yes                   | ❌ No              | ❌ No           |
+| ❌ No                    | ✅ Yes             | ❌ No           |
+| ❌ No                    | ❌ No              | ❌ No           |
+
+**Key Point:** Users need **both** Confluence page edit permission **and** LaTeX whitelist access (when enabled).
+
+---
+
+## Security Considerations
+
+### Data Protection
+
+- ✅ Whitelist stored securely in Confluence
+- ✅ Encrypted transmission
+- ✅ No personal data exposed publicly
+- ✅ GDPR compliant
+
+### Auditing
+
+**Currently available:**
+
+- Confluence audit logs show page edits
+- Page history tracks macro changes
+
+**Coming soon:**
+
+- Detailed LaTeX-specific audit logs
+- Permission change tracking
+- Access attempt logging
+
+---
+
+## Future Enhancements
+
+### Planned Features
+
+- 👥 **Group Support** - Whitelist entire Confluence groups instead of individual users
+- 📊 **Permission Reports** - See who has access and how they're using it
+- 🔄 **Bulk Operations** - Add/remove multiple users at once via CSV
+- ⏰ **Temporary Access** - Grant time-limited access that expires automatically
+- 📝 **Detailed Audit Logs** - Track all permission changes and access attempts
+
+---
+
+## Related Documentation
+
+- 📖 [Usage Statistics](/docs/latex-math-for-confluence/configuration/usage-statistics) - Track macro usage across your instance
+- 📖 [Getting Started](/docs/latex-math-for-confluence/getting-started) - Quick setup guide
+- ❓ [FAQ](/docs/latex-math-for-confluence/faq) - Frequently asked questions
+
+---
+
+## Need Help?
+
+- 💬 [Contact Support](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📚 [View All Documentation](/docs/latex-math-for-confluence/INDEX)
+- 🔒 [Report Security Issues](https://yamuno.atlassian.net/servicedesk/customer/portals)
+
+---
+
+**Last Updated:** January 2025

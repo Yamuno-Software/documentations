@@ -1,0 +1,504 @@
+---
+title: Migration
+order: 4
+---
+
+# Migration Guide
+
+> ⚠️ **Coming Soon** - Automated migration tools are currently in development.
+
+## Overview
+
+This guide will help you migrate LaTeX equations from other Confluence apps to LaTeX Math for Confluence. While automated migration tools are coming soon, you can manually migrate your content today.
+
+---
+
+## Migration Status
+
+### Current Status: Manual Migration
+
+**Available Now:**
+- ✅ Manual copy/paste migration
+- ✅ LaTeX code extraction
+- ✅ Step-by-step instructions
+
+**Coming Soon:**
+- 🔄 Automated migration tool
+- 📊 Bulk import functionality
+- 🔍 Content discovery
+- ✅ Validation and verification
+- 📈 Progress tracking
+
+**Expected Release:** Q2 2025
+
+---
+
+## Supported Source Apps
+
+### Currently Supported (Manual)
+
+1. **Math Text** - Standard LaTeX macros
+2. **LaTeX Math** - Compatible LaTeX syntax
+3. **Math Macro** - Basic equation macros
+4. **Custom LaTeX Solutions** - Standard LaTeX code
+
+### Coming Soon (Automated)
+
+- Automatic detection of source app
+- One-click migration
+- Format conversion
+- Bulk processing
+
+---
+
+## Manual Migration Process
+
+### Overview
+
+The manual migration process involves:
+1. Identifying pages with old LaTeX macros
+2. Extracting LaTeX code
+3. Creating new LaTeX Math macros
+4. Verifying rendering
+5. Removing old macros
+
+**Time estimate:** 2-5 minutes per page
+
+---
+
+## Step-by-Step Migration
+
+### Step 1: Identify Pages
+
+**Find pages with LaTeX equations:**
+
+1. Go to **Confluence Search**
+2. Search for your old macro name (e.g., "math-text")
+3. Note pages that need migration
+4. Create a migration checklist
+
+**Or use CQL:**
+```cql
+macro = "your-old-macro-name"
+```
+
+---
+
+### Step 2: Backup Content
+
+**Before migrating:**
+
+1. **Export pages** as PDF or HTML backup
+2. **Document LaTeX code** in a spreadsheet
+3. **Take screenshots** for reference
+4. **Communicate to team** about migration
+
+> **💡 Tip:** Always backup before making changes!
+
+---
+
+### Step 3: Extract LaTeX Code
+
+**Method 1: Edit Mode**
+1. Open page in edit mode
+2. Click on old macro
+3. Copy the LaTeX code
+4. Save code in a text file
+
+**Method 2: View Source**
+1. View page source
+2. Find macro definition
+3. Extract LaTeX content
+4. Clean up any formatting
+
+---
+
+### Step 4: Create New Macro
+
+1. **Insert new LaTeX Math macro**
+   - Type `/latex`
+   - Select appropriate type (inline/block)
+
+2. **Paste LaTeX code**
+   - Paste extracted code
+   - Verify in live preview
+
+3. **Adjust if needed**
+   - Fix any syntax differences
+   - Test different delimiters
+   - Set alignment (block macros)
+
+4. **Save the macro**
+
+---
+
+### Step 5: Verify Rendering
+
+**Check that equation:**
+- ✅ Renders correctly
+- ✅ Matches original appearance
+- ✅ Displays properly on mobile
+- ✅ Works in dark mode
+- ✅ Shows in preview and published view
+
+---
+
+### Step 6: Remove Old Macro
+
+**Only after verifying:**
+1. Delete old macro
+2. Save page
+3. Test published page
+4. Mark as migrated in checklist
+
+---
+
+## Migration Scenarios
+
+### Scenario 1: Single Page
+
+**Simple migration:**
+1. Edit page
+2. Replace old macro with new
+3. Verify and save
+4. Done! ✅
+
+**Time:** 5 minutes
+
+---
+
+### Scenario 2: Multiple Pages (Same Space)
+
+**Batch approach:**
+1. List all pages in space
+2. Migrate one at a time
+3. Track progress
+4. Verify at end
+
+**Time:** 5 minutes × number of pages
+
+---
+
+### Scenario 3: Instance-Wide Migration
+
+**Systematic approach:**
+1. **Plan:**
+   - Identify all affected pages
+   - Prioritize critical content
+   - Schedule migration windows
+
+2. **Execute:**
+   - Migrate space by space
+   - Test thoroughly
+   - Communicate progress
+
+3. **Validate:**
+   - Verify all pages
+   - Check for issues
+   - Get user feedback
+
+**Time:** Varies by instance size
+
+---
+
+## Common Migration Issues
+
+### Issue 1: Syntax Differences
+
+**Problem:** LaTeX code doesn't work in new app
+
+**Causes:**
+- Different supported commands
+- Delimiter differences
+- Environment variations
+
+**Solutions:**
+1. Check [KaTeX documentation](https://katex.org/docs/supported.html)
+2. Use live preview to debug
+3. Adjust syntax as needed
+4. Contact support if stuck
+
+---
+
+### Issue 2: Appearance Changes
+
+**Problem:** Equation looks different
+
+**Causes:**
+- Different rendering engine
+- Font differences
+- Size/spacing variations
+
+**Solutions:**
+1. Adjust LaTeX formatting
+2. Use sizing commands (`\large`, `\small`)
+3. Test different approaches
+4. Accept minor visual differences
+
+---
+
+### Issue 3: Unsupported Features
+
+**Problem:** Some features don't work
+
+**Causes:**
+- Old app had custom features
+- Unsupported LaTeX commands
+- App-specific syntax
+
+**Solutions:**
+1. Find equivalent LaTeX commands
+2. Simplify complex equations
+3. Split into multiple macros
+4. Request feature if needed
+
+---
+
+## Migration Checklist
+
+### Pre-Migration
+
+- [ ] Install LaTeX Math for Confluence
+- [ ] Configure permissions
+- [ ] Test with sample equations
+- [ ] Train team on new app
+- [ ] Create backup of content
+- [ ] List all pages to migrate
+- [ ] Schedule migration time
+
+### During Migration
+
+- [ ] Start with low-traffic pages
+- [ ] Migrate one page at a time
+- [ ] Verify each migration
+- [ ] Document any issues
+- [ ] Take breaks (avoid fatigue)
+- [ ] Track progress
+
+### Post-Migration
+
+- [ ] Verify all pages
+- [ ] Test mobile view
+- [ ] Check dark mode
+- [ ] Remove old macros
+- [ ] Uninstall old app (optional)
+- [ ] Update documentation
+- [ ] Notify team of completion
+
+---
+
+## Best Practices
+
+### ✅ Do's
+
+1. **Test first** - Try a few pages before committing
+2. **Backup always** - Export before migrating
+3. **Verify thoroughly** - Check rendering carefully
+4. **Communicate** - Keep team informed
+5. **Take time** - Don't rush
+6. **Document issues** - Note problems for support
+
+### ❌ Don'ts
+
+1. **Don't delete old macros** until new ones work
+2. **Don't migrate everything** at once
+3. **Don't skip verification**
+4. **Don't forget mobile testing**
+5. **Don't ignore syntax errors**
+6. **Don't uninstall old app** until migration complete
+
+---
+
+## Automated Migration (Coming Soon)
+
+### Planned Features
+
+**Discovery:**
+- Auto-detect old LaTeX macros
+- Scan entire instance
+- Generate migration report
+- Identify potential issues
+
+**Conversion:**
+- One-click migration
+- Batch processing
+- Automatic syntax conversion
+- Preserve formatting
+
+**Validation:**
+- Compare before/after
+- Verify rendering
+- Error reporting
+- Rollback capability
+
+**Tracking:**
+- Progress dashboard
+- Success/failure rates
+- Remaining items
+- Completion estimates
+
+### Beta Program
+
+Want early access to migration tools?
+[Sign up for the beta program](https://yamuno.atlassian.net/servicedesk/customer/portals)
+
+---
+
+## Migration Support
+
+### We Can Help
+
+**Free Migration Assistance:**
+- Migration planning
+- Syntax conversion help
+- Issue troubleshooting
+- Best practice guidance
+
+**Contact us:**
+- 💬 [Support Portal](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📧 Email support through portal
+- 📞 Schedule consultation
+
+### Professional Services
+
+For large-scale migrations:
+- Dedicated migration specialist
+- Hands-on assistance
+- Custom tools
+- Training
+
+[Contact us for quote](https://yamuno.atlassian.net/servicedesk/customer/portals)
+
+---
+
+## Migration Timeline
+
+### Recommended Approach
+
+**Week 1: Planning**
+- Install app
+- Test functionality
+- Identify pages
+- Create plan
+
+**Week 2-3: Pilot**
+- Migrate 5-10 pages
+- Gather feedback
+- Refine process
+- Document learnings
+
+**Week 4+: Full Migration**
+- Migrate remaining pages
+- Verify continuously
+- Track progress
+- Complete cleanup
+
+---
+
+## Success Stories
+
+### Case Study 1: Research Team
+
+**Situation:**
+- 50 pages with equations
+- Math Text app
+- Team of 10 users
+
+**Process:**
+- Pilot: 5 pages
+- Full migration: 2 weeks
+- Zero issues
+
+**Result:** Successful migration ✅
+
+---
+
+### Case Study 2: Enterprise
+
+**Situation:**
+- 200+ pages
+- Multiple spaces
+- Complex equations
+
+**Process:**
+- Professional services engaged
+- 4-week migration
+- Training provided
+
+**Result:** Smooth transition ✅
+
+---
+
+## Migration FAQ
+
+### How long does migration take?
+
+- **Single page:** 5 minutes
+- **Small instance (10-50 pages):** 1-2 days
+- **Large instance (100+ pages):** 1-4 weeks
+
+### Will I lose any data?
+
+No, as long as you:
+- Backup before migrating
+- Verify before removing old macros
+- Don't uninstall old app prematurely
+
+### Can I keep both apps during migration?
+
+Yes! We recommend:
+- Keep old app installed
+- Migrate gradually
+- Test thoroughly
+- Remove old app when done
+
+### What if something goes wrong?
+
+You can always:
+- Restore from backup
+- Revert to old macro
+- Contact support
+- Try again
+
+---
+
+## Future Updates
+
+### Roadmap
+
+**Q1 2025:**
+- Migration tool beta
+- Syntax converter
+- Documentation
+
+**Q2 2025:**
+- Public release
+- Automated discovery
+- Bulk migration
+
+**Q3 2025:**
+- Advanced features
+- Migration analytics
+- Enterprise tools
+
+---
+
+## Related Documentation
+
+- 📖 [Getting Started](/docs/latex-math-for-confluence/getting-started/index) - Setup guide
+- 📖 [Inline Macro](/docs/latex-math-for-confluence/features/inline-macro) - Inline equations
+- 📖 [Block Macro](/docs/latex-math-for-confluence/features/block-macro) - Display equations
+- ❓ [FAQ](/docs/latex-math-for-confluence/faq)
+
+---
+
+## Need Migration Help?
+
+- 💬 [Contact Support](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📚 [View All Documentation](/docs/latex-math-for-confluence/INDEX)
+- 🔄 [Request Migration Assistance](https://yamuno.atlassian.net/servicedesk/customer/portals)
+
+---
+
+**Status:** Migration tools in development
+**Last Updated:** January 2025

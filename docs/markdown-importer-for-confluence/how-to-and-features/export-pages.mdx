@@ -1,0 +1,457 @@
+---
+title: Export Pages to Markdown
+description: Learn how to export Confluence pages to markdown format
+order: 3
+---
+
+# Export Pages to Markdown
+
+![Export pages](https://marketplace.atlassian.com/product-listing/files/9a1904d6-deb4-47e4-8e0e-9125f5ebcae3?width=1840&height=900)
+
+Export your Confluence pages to markdown format with all attachments, formatting, and hierarchy preserved.
+
+## Getting Started with Export
+
+### Accessing the Exporter
+
+There are two ways to access the export functionality:
+
+**1. From a Specific Page:**
+
+- Navigate to the Confluence page you want to export
+- Click the ••• (More actions) menu in the top-right corner
+- Select "Export to Markdown"
+
+**2. From Global Access:**
+
+- Click on the Apps menu in Confluence
+- Select "Markdown Importer & Exporter"
+- Choose "Export" mode
+- Select any page or space to export
+
+## Export Options
+
+### Single Page Export
+
+Export a single Confluence page to markdown format.
+
+**How to use:**
+
+1. Navigate to the page you want to export
+2. Click ••• (More actions) menu
+3. Select "Export to Markdown"
+4. Choose "Single Page Only"
+5. Click "Export"
+6. Download the generated markdown file
+
+**What gets exported:**
+
+- Page content in markdown format
+- All inline images and attachments
+- Code blocks with syntax highlighting
+- Tables, lists, and formatting
+- Local references to attachments
+
+**Best for:**
+
+- Quick exports of individual pages
+- Sharing specific documentation
+- Creating backups of important pages
+
+### Page Tree Export
+
+Export a page and all its child pages with preserved hierarchy.
+
+**How to use:**
+
+1. Navigate to the parent page
+2. Click ••• (More actions) menu
+3. Select "Export to Markdown"
+4. Choose "Include Child Pages"
+5. Review the page tree preview
+6. Click "Export"
+7. Download the ZIP file
+
+**Features:**
+
+- Maintains page hierarchy as folder structure
+- Preserves parent-child relationships
+- Includes all nested pages
+- Organizes attachments by page
+- Creates a complete documentation structure
+
+**Best for:**
+
+- Exporting documentation sections
+- Backing up related pages
+- Creating portable documentation sets
+
+### Space Export
+
+Export an entire Confluence space with all pages and attachments.
+
+**How to use:**
+
+1. Open the app from global access
+2. Select "Export" mode
+3. Choose the space to export
+4. Review the space summary (page count, size)
+5. Configure export options
+6. Click "Export Space"
+7. Wait for processing (may take a few minutes)
+8. Download the complete ZIP archive
+
+**Features:**
+
+- Complete space backup
+- All pages and child pages included
+- Full attachment handling
+- Organized folder structure
+- Preserves page hierarchy
+
+**Best for:**
+
+- Full space backups
+- Space migrations
+- Documentation archives
+- Offline documentation
+
+## Understanding Export Results
+
+### File Structure
+
+When you export, you'll receive a ZIP file with the following structure:
+
+```
+confluence-export/
+├── Home.md
+├── Getting Started/
+│   ├── index.md
+│   ├── Installation.md
+│   └── Quick Start.md
+├── Features/
+│   ├── index.md
+│   ├── Import Features.md
+│   └── Export Features.md
+└── attachments/
+    ├── Getting Started/
+    │   ├── screenshot1.png
+    │   └── diagram.png
+    └── Features/
+        ├── demo.gif
+        └── example.pdf
+```
+
+### Attachment References
+
+All images and attachments are referenced using relative paths:
+
+```markdown
+![Screenshot](./attachments/Getting%20Started/screenshot1.png)
+
+[Download PDF](./attachments/Features/example.pdf)
+```
+
+### Internal Links
+
+Internal links between pages are converted to markdown links:
+
+```markdown
+See the [Installation Guide](./Getting%20Started/Installation.md) for details.
+
+Check out our [Features](./Features/index.md) documentation.
+```
+
+## Formatting Preservation
+
+### Supported Confluence Elements
+
+The exporter preserves all standard Confluence formatting:
+
+**Text Formatting:**
+
+- Bold, italic, strikethrough, underline
+- Headings (H1-H6)
+- Block quotes
+- Horizontal rules
+- Colored text (as inline HTML)
+
+**Lists:**
+
+- Unordered lists
+- Ordered lists
+- Nested lists
+- Task lists with checkboxes
+
+**Code:**
+
+- Inline code
+- Code blocks with syntax highlighting
+- Language specification preserved
+
+**Tables:**
+
+- Standard tables
+- Column alignment
+- Header rows
+- Complex table structures
+
+**Media:**
+
+- Images with alt text
+- File attachments
+- Image galleries (as individual images)
+
+**Special Elements:**
+
+- Info, warning, note, and tip panels (as blockquotes)
+- Expand/collapse sections (as standard content)
+- Status labels (as text)
+- User mentions (as text with @ symbol)
+
+### Confluence-Specific Features
+
+**Macros:**
+Most Confluence macros are converted to equivalent markdown or plain text:
+
+- Info/Warning/Note panels → Blockquotes
+- Code block → Fenced code blocks
+- Table of contents → Generated list
+- Expand → Regular content with heading
+
+**Page Properties:**
+Optional frontmatter can include:
+
+```yaml
+---
+title: Page Title
+author: John Doe
+created: 2024-01-15
+modified: 2024-01-20
+space: DOCS
+page_id: 123456789
+---
+```
+
+## Export Customization
+
+### File Naming Options
+
+Choose how exported files are named:
+
+- **Page titles**: Use Confluence page titles
+- **Slugified names**: Convert to URL-friendly names (default)
+- **Numbered**: Add sequential numbers for ordering
+- **Custom prefix**: Add prefix to all files
+
+### Folder Structure Options
+
+**Hierarchy-based** (default): Mirrors Confluence page tree
+
+```
+Parent Page/
+├── index.md
+└── Child Page.md
+```
+
+**Flat structure**: All pages in one folder
+
+```
+Parent-Page.md
+Child-Page.md
+```
+
+**By space**: Organize by Confluence space
+
+```
+DOCS/
+  └── pages/
+TEAM/
+  └── pages/
+```
+
+### Attachment Handling
+
+**By page** (default): Organize attachments by source page
+
+```
+attachments/
+├── Page 1/
+│   └── image.png
+└── Page 2/
+    └── file.pdf
+```
+
+**Flat structure**: All attachments in one folder
+
+```
+attachments/
+├── image.png
+└── file.pdf
+```
+
+**By type**: Group attachments by file type
+
+```
+attachments/
+├── images/
+│   └── image.png
+└── documents/
+    └── file.pdf
+```
+
+## Advanced Features
+
+### Batch Export
+
+Export multiple spaces or page trees in one operation:
+
+1. Open from global access
+2. Select "Batch Export" mode
+3. Choose multiple spaces or parent pages
+4. Configure export options
+5. Export all at once
+6. Receive separate ZIP files for each
+
+### Incremental Export
+
+Export only pages modified since last export:
+
+1. Enable "Track exports" in settings
+2. Perform initial full export
+3. Subsequent exports only include:
+   - New pages
+   - Modified pages
+   - New/updated attachments
+4. Merge with previous exports manually
+
+### Selective Export
+
+Choose specific pages to include or exclude:
+
+1. Start space or tree export
+2. Review page list
+3. Uncheck pages to exclude
+4. Export selected pages only
+
+## Export Tips & Best Practices
+
+### Before Exporting
+
+1. **Review content**: Ensure pages are up-to-date
+2. **Check permissions**: Verify you have access to all pages
+3. **Clean up**: Remove outdated or duplicate pages
+4. **Organize**: Structure pages logically in Confluence
+
+### During Export
+
+1. **Stay online**: Maintain internet connection
+2. **Keep browser open**: Don't close the tab
+3. **Be patient**: Large spaces take time to process
+4. **Monitor progress**: Watch for any error messages
+
+### After Export
+
+1. **Verify structure**: Check folder organization
+2. **Test links**: Ensure internal links work
+3. **Check attachments**: Verify all files are present
+4. **Review formatting**: Spot-check markdown rendering
+
+### For Best Results
+
+1. **Export incrementally**: Start with small sections
+2. **Test first**: Try single page before full space
+3. **Use metadata**: Enable frontmatter for tracking
+4. **Keep backups**: Store exports in version control
+5. **Document structure**: Include README files
+
+## Common Export Scenarios
+
+### Documentation Backup
+
+Export your Confluence spaces regularly for backup:
+
+- Use space export for complete backups
+- Schedule regular exports (weekly/monthly)
+- Store in secure location
+- Version your backups
+
+### Documentation Portability
+
+Create portable documentation that works offline:
+
+- Export complete spaces or sections
+- Host as static site (e.g., MkDocs, Jekyll)
+- Share with external stakeholders
+- Create customer-facing docs
+
+### Content Migration
+
+Move documentation to another platform:
+
+- Export from Confluence to markdown
+- Use markdown as universal format
+- Import to new platform
+- Verify content after migration
+
+### Archiving Old Content
+
+Archive completed projects or old documentation:
+
+- Export project documentation
+- Include all attachments
+- Compress and store
+- Document archive location
+
+## Troubleshooting
+
+### Export Fails
+
+**Large exports timing out:**
+
+- Export in smaller sections
+- Use selective export to exclude unnecessary pages
+- Try during off-peak hours
+
+**Missing attachments:**
+
+- Check attachment permissions in Confluence
+- Verify files exist on pages
+- Try re-uploading attachments
+
+**Formatting issues:**
+
+- Complex macros may not convert perfectly
+- Review exported markdown
+- Make manual adjustments if needed
+
+### File Access Issues
+
+**Permission denied:**
+
+- Verify you have view access to all pages
+- Ask space admin for necessary permissions
+- Export only pages you can access
+
+**Missing pages:**
+
+- Check page restrictions in Confluence
+- Verify pages haven't been deleted
+- Ensure space access is granted
+
+## Getting Help
+
+If you encounter issues with export:
+
+1. Check this documentation for solutions
+2. Review [Known Issues](/docs/markdown-importer-for-confluence/known-issues)
+3. Contact support at [support@yamuno.com](mailto:support@yamuno.com)
+4. Visit our [support portal](https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51)
+
+When reporting issues, include:
+
+- Export type (page, tree, or space)
+- Number of pages
+- Error messages
+- Browser and version
+- Confluence Cloud instance details

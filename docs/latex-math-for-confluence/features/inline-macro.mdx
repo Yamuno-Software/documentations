@@ -1,0 +1,283 @@
+---
+title: Inline Macro
+order: 2
+---
+
+# Inline Macro
+
+Create mathematical equations that flow seamlessly within your text using the LaTeX Math Inline Macro.
+
+## What is the Inline Macro?
+
+The **Inline Macro** allows you to embed mathematical equations directly within paragraphs of text, appearing on the same line as surrounding content. Perfect for formulas, variables, and mathematical expressions that are part of a sentence.
+
+## When to Use Inline Macros
+
+Use inline macros when:
+- ✅ Embedding formulas within sentences
+- ✅ Referencing variables in paragraphs
+- ✅ Creating mathematical notation in lists
+- ✅ Writing technical documentation with inline equations
+
+**Don't use inline macros for:**
+- ❌ Large, complex equations (use [Block Macro](/docs/latex-math-for-confluence/features/block-macro) instead)
+- ❌ Multi-line equations
+- ❌ Equations that need emphasis
+
+---
+
+## How to Add an Inline Macro
+
+### Method 1: Slash Command (Recommended)
+
+1. Open a Confluence page in **edit mode**
+2. Position your cursor where you want the equation
+3. Type:
+   ```
+   /latex inline
+   ```
+4. Select **"LaTeX Math for Confluence (Inline)"** from the dropdown
+5. Enter your LaTeX equation
+6. Save the macro
+
+### Method 2: Insert Menu
+
+1. Open a page in **edit mode**
+2. Click **"Insert"** → **"Other macros"**
+3. Search for **"latex"**
+4. Select **"LaTeX Math for Confluence (Inline)"**
+5. Click **"Insert"**
+
+---
+
+## Writing Inline Equations
+
+### Syntax Options
+
+The inline macro supports multiple LaTeX delimiters:
+
+#### Single Dollar Sign (Recommended)
+```latex
+$E = mc^2$
+```
+
+#### Inline Math Delimiters
+```latex
+\(E = mc^2\)
+```
+
+#### No Delimiters (Automatic)
+```latex
+E = mc^2
+```
+> The macro automatically treats content as inline math
+
+---
+
+## Examples
+
+### Simple Variables
+
+**LaTeX:**
+```latex
+$x$
+```
+**Result:** Shows x as a mathematical variable within text
+
+### Subscripts and Superscripts
+
+**LaTeX:**
+```latex
+The area is $A = \pi r^2$ where $r$ is the radius.
+```
+**Result:** The area is πr² where r is the radius.
+
+### Fractions
+
+**LaTeX:**
+```latex
+The golden ratio $\phi = \frac{1 + \sqrt{5}}{2}$ appears in nature.
+```
+**Result:** The golden ratio φ = (1+√5)/2 appears in nature.
+
+### Greek Letters
+
+**LaTeX:**
+```latex
+The angle $\theta$ and coefficient $\alpha$ are important parameters.
+```
+**Result:** The angle θ and coefficient α are important parameters.
+
+### Sum and Product Notation
+
+**LaTeX:**
+```latex
+The sum $\sum_{i=1}^{n} i$ equals $\frac{n(n+1)}{2}$.
+```
+**Result:** The sum Σᵢ₌₁ⁿ i equals n(n+1)/2.
+
+---
+
+## Best Practices
+
+### ✅ Do's
+
+1. **Keep equations simple** - Inline equations should be concise
+2. **Use consistent notation** - Maintain variable naming throughout
+3. **Test in preview** - Always verify rendering before saving
+4. **Use plain LaTeX** - Avoid complex environments
+
+### ❌ Don'ts
+
+1. **Don't use display math delimiters** - No `$$` or `\[...\]`
+2. **Avoid multi-line equations** - Use block macros instead
+3. **Don't nest environments** - Keep inline equations flat
+4. **No large matrices** - Use block macros for complex structures
+
+---
+
+## Inline Mode Restrictions
+
+The inline macro has specific restrictions to ensure proper rendering:
+
+### Automatically Removed
+- `$$` display math delimiters → Converted to inline
+- `\[...\]` display delimiters → Converted to inline
+- `\begin{equation}` environments → Converted to inline
+- Multiple newlines → Converted to spaces
+
+### Not Supported
+- Multi-line equations
+- Display-style matrices (will render inline)
+- Alignment environments
+- Large delimiters
+
+> **💡 Tip:** If you need these features, use the [Block Macro](/docs/latex-math-for-confluence/features/block-macro) instead.
+
+---
+
+## Editing Inline Macros
+
+### Edit an Existing Macro
+
+1. **Hover** over the equation
+2. Click the **edit icon** (✏️)
+3. Modify your LaTeX
+4. **Save** changes
+
+### Quick Edit Shortcut
+
+1. **Click** on the rendered equation
+2. The editor opens automatically
+3. Make your changes
+4. Click **Save**
+
+---
+
+## Alignment and Styling
+
+### Vertical Alignment
+
+Inline equations automatically align with surrounding text baseline:
+- Superscripts extend above the line
+- Subscripts extend below the line
+- Main equation body aligns with text
+
+### Font Size
+
+Inline equations match the surrounding text size:
+- Normal paragraph: Standard size
+- Headings: Larger size
+- Small text: Proportionally smaller
+
+---
+
+## Common Use Cases
+
+### 1. Physics and Chemistry
+
+```latex
+Einstein's mass-energy equivalence $E = mc^2$ revolutionized physics.
+```
+
+### 2. Mathematics
+
+```latex
+A prime number $p$ is divisible only by $1$ and $p$.
+```
+
+### 3. Statistics
+
+```latex
+The standard deviation $\sigma$ measures data spread.
+```
+
+### 4. Computer Science
+
+```latex
+Time complexity is $O(n \log n)$ for merge sort.
+```
+
+### 5. Engineering
+
+```latex
+Ohm's law states that $V = IR$ where $V$ is voltage.
+```
+
+---
+
+## Troubleshooting
+
+### Equation Not Rendering
+
+**Problem:** Inline equation shows as raw LaTeX text
+
+**Solutions:**
+1. Check for syntax errors in your LaTeX
+2. Verify you're using inline-compatible syntax
+3. Remove any display math delimiters (`$$`, `\[`)
+4. Refresh the page
+
+### Equation Too Large
+
+**Problem:** Inline equation breaks text flow
+
+**Solution:** Convert to a [Block Macro](/docs/latex-math-for-confluence/features/block-macro):
+1. Copy your LaTeX code
+2. Delete the inline macro
+3. Insert a block macro
+4. Paste your code
+
+### Spacing Issues
+
+**Problem:** Odd spacing around equations
+
+**Solution:**
+1. Check for extra spaces in LaTeX
+2. Ensure no trailing newlines
+3. Use proper inline delimiters (`$...$`)
+
+---
+
+## Performance Tips
+
+- ✅ Use inline macros for simple, short equations
+- ✅ Limit to 5-10 inline equations per paragraph
+- ✅ Keep LaTeX code clean and concise
+- ⚠️ Too many inline equations may slow page loading
+
+---
+
+## Related Documentation
+
+- 📖 [Block Macro](/docs/latex-math-for-confluence/features/block-macro) - For display equations
+- 📖 [Live Preview](/docs/latex-math-for-confluence/features/live-preview) - Real-time rendering
+- 📖 [LaTeX Syntax Guide](/docs/latex-math-for-confluence/reference/latex-syntax)
+- ❓ [FAQ](/docs/latex-math-for-confluence/faq)
+
+---
+
+## Need Help?
+
+- 💬 [Contact Support](https://yamuno.atlassian.net/servicedesk/customer/portals)
+- 📚 [View All Documentation](/docs/latex-math-for-confluence/INDEX)

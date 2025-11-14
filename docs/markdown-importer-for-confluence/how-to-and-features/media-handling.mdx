@@ -1,0 +1,58 @@
+---
+title: Media Handling Guide
+description: Learn how to handle images, attachments, and other media files during import
+---
+
+# Media Handling Guide
+
+![Attachment upload](https://marketplace.atlassian.com/product-listing/files/94d374ce-6474-418e-bb8c-aa9d7d471658?width=1840&height=900)
+
+The Markdown Importer for Confluence supports local and remote media during the import process, including when uploading a ZIP archive.
+
+## Image Handling
+
+### Local Images
+
+Local images referenced by your markdown are uploaded as Confluence attachments and links are updated automatically.
+
+### Remote Images
+
+Remote images (from URLs) work out of the box and can optionally be mirrored into Confluence storage.
+
+## Attachment Management
+
+### Supported File Types
+
+The importer handles common attachments referenced in markdown and within ZIP uploads:
+
+- Documents (PDF, DOC, DOCX)
+- Images (JPG, PNG, GIF, SVG)
+- Archives (ZIP)
+- Code files
+- Other binary files supported by Confluence
+
+### Attachment Processing
+
+Attachments are:
+
+1. Uploaded to Confluence during import
+2. Linked correctly in the generated pages
+3. Preserved with their original file names
+
+## Best Practices
+
+Best practices:
+
+1. **Image Optimization**: Optimize images for faster uploads
+2. **File Organization**: Maintain a clear folder structure for hierarchy
+3. **Naming Conventions**: Use consistent, descriptive file names
+4. **Size Limits**: Keep files within Confluence's upload size limits
+
+## Troubleshooting
+
+Troubleshooting:
+
+1. **Missing Images**: Ensure referenced files are included in your ZIP
+2. **Upload Failures**: Check Confluence attachment size limits
+3. **Broken Links**: Use relative paths consistently within your project
+4. **Storage Issues**: Monitor Confluence storage for large imports

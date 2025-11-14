@@ -1,0 +1,165 @@
+---
+title: Quick Start Guide
+description: Step-by-step guide to create your first chart in Jira Dashboard
+---
+
+# Quick Start Guide
+
+Get up and running with Charts - Reports and Graphs for Jira Dashboard in just a few minutes!
+
+## Prerequisites
+
+- Jira Cloud instance with admin permissions
+- Charts app installed from the Atlassian Marketplace
+- At least one project with issues to visualize
+
+## Step 1: Access the Charts App
+
+### From Jira Dashboard
+
+1. Navigate to your Jira dashboard
+2. Click the **Edit** button in the top-right corner
+3. Click **Add gadget**
+4. Search for "Charts - Reports and Graphs"
+5. Click **Add** on the Charts gadget
+6. Position the gadget where you want it on your dashboard
+
+## Step 2: Configure Your First Chart
+
+### Select Data Source
+
+1. In the chart configuration panel, click **Data Source**
+2. Choose one or more projects to include
+3. Optionally, filter by:
+   - **Specific fields**: Select custom or system fields
+   - **Labels**: Include only issues with certain labels
+   - **JQL Query**: Use advanced JQL for precise filtering
+
+### Choose Chart Type
+
+Select your preferred visualization:
+
+- **Bar Chart**: Best for comparing quantities across categories
+- **Line Chart**: Ideal for showing trends over time
+- **Pie Chart**: Perfect for showing proportions
+- **Area Chart**: Great for cumulative data over time
+- **Scatter Chart**: Useful for correlation analysis
+- **Table View**: Detailed data in tabular format
+
+## Step 3: Group and Analyze Your Data
+
+### Grouping Options
+
+Group your data by:
+
+- **Status**: See issue distribution across workflow states
+- **Assignee**: Track team member workload
+- **Issue Type**: Analyze issue type distribution
+- **Project**: Compare across multiple projects
+- **Labels**: Group by custom labels
+- **Priority**: Understand issue urgency distribution
+
+### Analysis Mode
+
+Choose your analysis approach:
+
+- **Project Comparison**: Compare metrics across different projects
+- **Data Aggregation**: Combine data for overall insights
+- **Time-based Analysis**: Track changes over time periods
+
+## Step 4: Customize Your Chart
+
+### Visual Customization
+
+1. **Branding**:
+   - Upload your company logo
+   - Add a custom chart title
+   - Include descriptive subtitle
+
+2. **Colors**:
+   - Choose from preset color schemes
+   - Create custom color palettes
+   - Adjust opacity for better visibility
+
+3. **Layout**:
+   - Show/hide axis labels
+   - Adjust legend position
+   - Enable/disable gridlines
+   - Set min/max values for axes
+
+### Interactive Features
+
+Enable interactive elements:
+
+- **Hover tooltips**: Show detailed information on hover
+- **Click-through**: Navigate to issue details on click
+- **Export options**: Download chart as image or data as CSV
+- **Auto-refresh**: Keep data current with automatic updates
+
+## Step 5: Save and Share
+
+1. Click **Save** to preserve your configuration
+2. Give your chart a meaningful name
+3. Optionally, add to favorites for quick access
+4. Share the dashboard with your team
+
+## Example: Creating a Sprint Progress Chart
+
+Let's create a chart showing sprint progress:
+
+1. **Data Source**: Select your active sprint's project
+2. **Chart Type**: Choose "Bar Chart"
+3. **Group By**: Select "Status"
+4. **Filter**: Add JQL `Sprint in openSprints()`
+5. **Customize**:
+   - Title: "Current Sprint Progress"
+   - Colors: Green for Done, Yellow for In Progress, Red for To Do
+6. **Save**: Name it "Sprint Progress Tracker"
+
+## Tips for Success
+
+### Best Practices
+
+- **Start Simple**: Begin with basic charts and gradually add complexity
+- **Use Meaningful Titles**: Make charts self-explanatory
+- **Choose Appropriate Chart Types**: Match visualization to your data story
+- **Regular Updates**: Schedule periodic reviews of your charts
+- **Test Filters**: Verify your JQL queries return expected results
+
+### Common Use Cases
+
+1. **Sprint Burndown**: Track remaining work in current sprint
+2. **Team Velocity**: Monitor team performance over sprints
+3. **Bug Tracking**: Visualize bug trends and resolution rates
+4. **Project Health**: Overall project status dashboard
+5. **Resource Allocation**: Team member workload distribution
+
+## Troubleshooting
+
+### Chart Not Loading?
+
+- Check your permissions for selected projects
+- Verify JQL syntax if using custom queries
+- Ensure selected fields contain data
+- Try refreshing the dashboard
+
+### Data Looks Incorrect?
+
+- Review your filter criteria
+- Check grouping configuration
+- Verify date ranges if applicable
+- Confirm field mappings are correct
+
+## Next Steps
+
+Now that you've created your first chart:
+
+1. Explore [Features & How To](/docs/charts-for-jira-dashboard/how-to-and-features)
+2. Learn about [Chart Types](/docs/charts-for-jira-dashboard/how-to-and-features/chart-types)
+3. Check [Known Issues](/docs/charts-for-jira-dashboard/known-issues) for troubleshooting
+4. Review [Release Notes](/docs/charts-for-jira-dashboard/release-notes) for latest updates
+
+---
+
+Need help? Visit our [Support Portal](https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51) for assistance.
+
