@@ -8,30 +8,33 @@
     "linkedin": "https://www.linkedin.com/company/yamuno",
     "medium": "https://medium.com/@yamuno"
   },
-  "header": {
-    "links": [
-      {
-        "title": "Privacy Policy",
-        "href": "https://yamuno.com/privacy-policy"
-      },
-      {
-        "title": "Terms of Service",
-        "href": "https://yamuno.com/tos"
-      },
-      {
-        "title": "EULA",
-        "href": "https://yamuno.com/eula"
-      },
-      {
-        "title": "Support",
-        "href": "https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51"
-      },
-      {
-        "title": "Blogs",
-        "href": "https://yamuno.com/blogs"
-      }
-    ]
-  },
+  "anchors": [
+    {
+      "title": "Privacy Policy",
+      "icon": "shield",
+      "href": "https://yamuno.com/privacy-policy"
+    },
+    {
+      "title": "Terms of Service",
+      "icon": "file-contract",
+      "href": "https://yamuno.com/tos"
+    },
+    {
+      "title": "EULA",
+      "icon": "file-signature",
+      "href": "https://yamuno.com/eula"
+    },
+    {
+      "title": "Support",
+      "icon": "headset",
+      "href": "https://yamuno.atlassian.net/servicedesk/customer/portal/2/group/2/create/51"
+    },
+    {
+      "title": "Blogs",
+      "icon": "blog",
+      "href": "https://yamuno.com/blogs"
+    }
+  ],
   "sidebar": [
     {
       "group": "Overview",
