@@ -328,57 +328,56 @@
           "title": "Release Notes",
           "href": "/markdown-importer-for-confluence/release-notes",
           "icon": "scroll"
+        }
+      ]
+    },
+    {
+      "group": "REST API",
+      "pages": [
+        {
+          "title": "Overview",
+          "href": "/markdown-importer-for-confluence/rest-api",
+          "icon": "api"
         },
         {
-          "group": "REST API",
-          "href": "/markdown-importer-for-confluence/rest-api",
-          "pages": [
-            {
-              "title": "Overview",
-              "href": "/markdown-importer-for-confluence/rest-api",
-              "icon": "api"
-            },
-            {
-              "title": "Getting Started",
-              "href": "/markdown-importer-for-confluence/rest-api/getting-started",
-              "icon": "play"
-            },
-            {
-              "title": "Authentication",
-              "href": "/markdown-importer-for-confluence/rest-api/authentication",
-              "icon": "key"
-            },
-            {
-              "title": "API Reference",
-              "href": "/markdown-importer-for-confluence/rest-api/api-reference",
-              "icon": "book-open"
-            },
-            {
-              "title": "Examples",
-              "href": "/markdown-importer-for-confluence/rest-api/examples",
-              "icon": "code"
-            },
-            {
-              "title": "Best Practices",
-              "href": "/markdown-importer-for-confluence/rest-api/best-practices",
-              "icon": "star"
-            },
-            {
-              "title": "Limitations",
-              "href": "/markdown-importer-for-confluence/rest-api/limitations",
-              "icon": "triangle-exclamation"
-            },
-            {
-              "title": "FAQ",
-              "href": "/markdown-importer-for-confluence/rest-api/faq",
-              "icon": "question-circle"
-            },
-            {
-              "title": "Troubleshooting",
-              "href": "/markdown-importer-for-confluence/rest-api/troubleshooting",
-              "icon": "wrench"
-            }
-          ]
+          "title": "Getting Started",
+          "href": "/markdown-importer-for-confluence/rest-api/getting-started",
+          "icon": "play"
+        },
+        {
+          "title": "Authentication",
+          "href": "/markdown-importer-for-confluence/rest-api/authentication",
+          "icon": "key"
+        },
+        {
+          "title": "API Reference",
+          "href": "/markdown-importer-for-confluence/rest-api/api-reference",
+          "icon": "book-open"
+        },
+        {
+          "title": "Examples",
+          "href": "/markdown-importer-for-confluence/rest-api/examples",
+          "icon": "code"
+        },
+        {
+          "title": "Best Practices",
+          "href": "/markdown-importer-for-confluence/rest-api/best-practices",
+          "icon": "star"
+        },
+        {
+          "title": "Limitations",
+          "href": "/markdown-importer-for-confluence/rest-api/limitations",
+          "icon": "triangle-exclamation"
+        },
+        {
+          "title": "FAQ",
+          "href": "/markdown-importer-for-confluence/rest-api/faq",
+          "icon": "question-circle"
+        },
+        {
+          "title": "Troubleshooting",
+          "href": "/markdown-importer-for-confluence/rest-api/troubleshooting",
+          "icon": "wrench"
         }
       ]
     },
@@ -459,57 +458,6 @@
           "title": "Release Notes",
           "href": "/markdown-importer-for-confluence/release-notes",
           "icon": "scroll"
-        },
-        {
-          "group": "REST API",
-          "href": "/markdown-importer-for-confluence/rest-api",
-          "pages": [
-            {
-              "title": "Overview",
-              "href": "/markdown-importer-for-confluence/rest-api",
-              "icon": "api"
-            },
-            {
-              "title": "Getting Started",
-              "href": "/markdown-importer-for-confluence/rest-api/getting-started",
-              "icon": "play"
-            },
-            {
-              "title": "Authentication",
-              "href": "/markdown-importer-for-confluence/rest-api/authentication",
-              "icon": "key"
-            },
-            {
-              "title": "API Reference",
-              "href": "/markdown-importer-for-confluence/rest-api/api-reference",
-              "icon": "book-open"
-            },
-            {
-              "title": "Examples",
-              "href": "/markdown-importer-for-confluence/rest-api/examples",
-              "icon": "code"
-            },
-            {
-              "title": "Best Practices",
-              "href": "/markdown-importer-for-confluence/rest-api/best-practices",
-              "icon": "star"
-            },
-            {
-              "title": "Limitations",
-              "href": "/markdown-importer-for-confluence/rest-api/limitations",
-              "icon": "triangle-exclamation"
-            },
-            {
-              "title": "FAQ",
-              "href": "/markdown-importer-for-confluence/rest-api/faq",
-              "icon": "question-circle"
-            },
-            {
-              "title": "Troubleshooting",
-              "href": "/markdown-importer-for-confluence/rest-api/troubleshooting",
-              "icon": "wrench"
-            }
-          ]
         }
       ]
     }
