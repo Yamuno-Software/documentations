@@ -9,6 +9,9 @@
   "theme": {
     "primary": "#504DC4"
   },
+  "scripts": {
+    "googleAnalytics": "G-C4DJ8PTM8H"
+  },
   "header": {
     "showGitHubCard": false,
     "links": [
