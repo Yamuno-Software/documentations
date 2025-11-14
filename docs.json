@@ -8,10 +8,27 @@
   "favicon": "https://pub-b0d9bb8609a9490e8a3d5e2e7f63af24.r2.dev/yamuno-primary.png",
   "social": {
     "website": "https://yamuno.com",
-    "linkedin": "https://www.linkedin.com/company/yamuno",
-    "medium": "https://medium.com/@yamuno"
+    "linkedin": "https://www.linkedin.com/company/yamuno"
+  },
+  "header": {
+    "showGitHubCard": false,
+    "links": [
+      {
+        "title": "Website",
+        "href": "https://yamuno.com"
+      },
+      {
+        "title": "Marketplace",
+        "href": "https://marketplace.atlassian.com/vendors/1224569/yamuno-software"
+      }
+    ]
   },
   "anchors": [
+    {
+      "title": "Website",
+      "icon": "globe",
+      "href": "https://yamuno.com"
+    },
     {
       "title": "Privacy Policy",
       "icon": "shield",
